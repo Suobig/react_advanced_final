@@ -3,19 +3,34 @@ module.exports = {
 	parserOptions: {
 		ecmaVersion: 2020,
 		sourceType: 'module',
-		warnOnUnsupportedTypeScriptVersion: false,
+		project: './tsconfig.json',
 	},
 	settings: {
 		react: {
 			version: 'detect',
 		},
+		'import/resolver': {
+			node: {
+				paths: ['src'],
+			},
+		},
+		'boundaries/elements': [
+			{ type: 'shared', pattern: 'src/6-shared/*' },
+			{ type: 'entities', pattern: 'src/5-entities/*' },
+			{ type: 'features', pattern: 'src/4-features/*' },
+			{ type: 'widgets', pattern: 'src/3-widgets/*' },
+			{ type: 'pages', pattern: 'src/2-pages/*' },
+			{ type: 'app', pattern: 'src/1-app/*' },
+		],
 	},
+	plugins: ['react', 'import', 'jsx-a11y', 'react-hooks', 'boundaries'],
 	extends: [
 		'plugin:@typescript-eslint/recommended',
 		'plugin:prettier/recommended',
 		'prettier',
 		'plugin:react/recommended',
 		'plugin:react-hooks/recommended',
+		'plugin:import/recommended',
 		'plugin:import/errors',
 		'plugin:import/warnings',
 		'plugin:import/typescript',

@@ -1,12 +1,12 @@
 {
 	"compilerOptions": {
-		"target": "ES5" /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', or 'ESNEXT'. */,
+		"target": "ES2022" /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', or 'ESNEXT'. */,
 		"module": "ESNext" /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */,
-		"moduleResolution": "node" /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */ /* Type declaration files to be included in compilation. */,
+		"moduleResolution": "bundler" /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */ /* Type declaration files to be included in compilation. */,
 		"lib": [
 			"DOM",
 			"DOM.Iterable",
-			"ESNext"
+			"ES2022"
 		] /* Specify library files to be included in the compilation. */,
 		"jsx": "react-jsx" /* Specify JSX code generation: 'preserve', 'react-native', 'react' or 'react-jsx'. */,
 		"isolatedModules": true /* Transpile each file as a separate module (similar to 'ts.transpileModule'). */,
@@ -18,8 +18,16 @@
 		"sourceMap": true,
 		"allowJs": true /* Allow javascript files to be compiled. Useful when migrating JS to TS */,
 		// "checkJs": true /* Report errors in .js files. Works in tandem with allowJs. */,
-		"plugins": [{ "name": "typescript-plugin-css-modules" }]
+		"plugins": [{ "name": "typescript-plugin-css-modules" }],
+    "paths": {
+      "6-shared/*": ["./src/6-shared/*"],
+      // "entities/*": ["./src/entities/*"],
+      // "features/*": ["./src/features/*"],
+      "3-widgets/*": ["./src/3-widgets/*"],
+      "2-pages/*": ["./src/2-pages/*"],
+      "1-app/*": ["./src/1-app/*"]
+    }
 	},
 	"outDir": "./dist/",
-	"include": ["src/**/*"]
+	"include": ["src"]
 }
