@@ -1,7 +1,9 @@
-import classNames from 'classnames';
 import s from './Card.module.css';
-import { Price } from './Price/ui/Price';
+
+import classNames from 'classnames';
 import { Link } from 'react-router-dom';
+
+import { Price } from '../../Price';
 import { LikeButton } from '../../LikeButton';
 import { useAppSelector } from '../../../store/utils';
 import { cartSelectors } from '../../../store/slices/cart';
@@ -42,7 +44,7 @@ export const Card = ({ product }: CardProps) => {
 			<Link className={s['card__link']} to={`/products/${id}`}>
 				<img
 					src={images}
-					alt={name}
+					alt={''}
 					className={s['card__image']}
 					loading='lazy'
 				/>

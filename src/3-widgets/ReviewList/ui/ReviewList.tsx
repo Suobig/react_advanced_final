@@ -1,7 +1,8 @@
-import classNames from 'classnames';
 import s from './ReviewList.module.css';
-import { Rating } from '6-shared/ui/Rating';
-import { ReviewForm } from './ReviewForm/ReviewForm';
+import classNames from 'classnames';
+
+import { ReviewForm } from '../../../3-widgets/ReviewForm';
+import { Rating } from '../../../6-shared/ui/Rating';
 
 type ReviewListProps = {
 	product: Product;

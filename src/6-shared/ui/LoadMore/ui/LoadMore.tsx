@@ -1,6 +1,7 @@
-import { Alert, CircularProgress, Stack } from '@mui/material';
+import { CircularProgress, Stack } from '@mui/material';
 import { useRef } from 'react';
 import { useLoadMore } from '../hooks/useLoadMore';
+import { SuccessMessage } from '../../../../6-shared/ui/SuccesMessage';
 
 export const LoadMore = () => {
 	const ref = useRef<HTMLDivElement>(null);
@@ -14,7 +15,7 @@ export const LoadMore = () => {
 			alignItems='center'
 			sx={{ my: 5 }}>
 			{isFetching && <CircularProgress />}
-			{isEndOfList && <Alert severity='success'>End of list!</Alert>}
+			{isEndOfList && <SuccessMessage message='End of list!' />}
 		</Stack>
 	);
 };

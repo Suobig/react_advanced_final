@@ -1,5 +1,5 @@
-import { Card } from '6-shared/ui/Card';
 import s from './CardList.module.css';
+import { Card } from '../../../6-shared/ui/Card';
 
 type CardListProps = {
 	title: string;

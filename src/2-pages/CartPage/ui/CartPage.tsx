@@ -1,16 +1,22 @@
 import s from './CartPage.module.css';
 import classNames from 'classnames';
 
-import { useAppSelector } from '6-shared/store/utils';
-import { cartSelectors } from '6-shared/store/slices/cart';
-import { CartList } from './CartList';
-import { CartAmount } from './CartAmount';
+import { CartList } from '../../../3-widgets/CartList';
+import { CartAmount } from '../../../3-widgets/CartAmount';
+import { useAppSelector } from '../../../6-shared/store/utils';
+import { cartSelectors } from '../../../6-shared/store/slices/cart';
+import { ButtonBack } from '../../../6-shared/ui/ButtonBack';
 
 export const CartPage = () => {
 	const products = useAppSelector(cartSelectors.getCartProducts);
 
 	if (!products.length) {
-		return <h1 className='header-title'>Товаров нет корзине</h1>;
+		return (
+			<>
+				<ButtonBack />
+				<h1 className='header-title'>Товаров нет в корзине</h1>
+			</>
+		);
 	}
 
 	return (

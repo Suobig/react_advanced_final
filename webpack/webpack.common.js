@@ -71,9 +71,20 @@ module.exports = {
 	},
 	resolve: {
 		extensions: ['.js', '.jsx', '.tsx', '.ts', '.json'], //указываем файлы с которыми будет работать webpack
+		alias: {
+			root: __dirname,
+			src: path.resolve(__dirname, 'src'),
+			// '1-app': path.resolve(__dirname, './src/1-app/'),
+			// '2-pages': path.resolve(__dirname, './src/2-pages/'),
+			// '3-widgets': path.resolve(__dirname, './src/3-widgets/'),
+			// '4-features': path.resolve(__dirname, './src/4-features/'),
+			// '5-entities': path.resolve(__dirname, './src/5-entities/'),
+			// '6-shared': path.resolve(__dirname, './src/6-shared/'),
+		},
 	},
 	plugins: [
 		new HTMLWebpackPlugins({
+			favicon: path.resolve(__dirname, '..', './public/images/favicon.ico'),
 			template: path.resolve(__dirname, '..', './public/index.html'),
 		}),
 		new CleanWebpackPlugin(),

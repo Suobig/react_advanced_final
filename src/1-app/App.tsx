@@ -1,20 +1,21 @@
 import { Outlet } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
-import { Header } from '3-widgets/Header';
-import { Footer } from '3-widgets/Footer';
-import { Sort } from '6-shared/ui/Sort';
+import { Header } from '../3-widgets/Header';
+import { Footer } from '../3-widgets/Footer';
 
 import 'react-toastify/dist/ReactToastify.css';
 import './styles/normalize.css';
 import './styles/styles.css';
+import { Box } from '@mui/material';
 
 export const App = () => {
 	return (
-		<>
+		<Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
 			<Header />
-			<Sort />
-			<Outlet />
+			<Box sx={{ p: 3, flexGrow: 1 }}>
+				<Outlet />
+			</Box>
 			<ToastContainer
 				position='top-right'
 				autoClose={5000}
@@ -23,6 +24,6 @@ export const App = () => {
 				theme='colored'
 			/>
 			<Footer />
-		</>
+		</Box>
 	);
 };

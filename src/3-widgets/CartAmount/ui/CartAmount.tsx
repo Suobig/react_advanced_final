@@ -1,4 +1,5 @@
-import s from '../../CartPage.module.css';
+import s from './CartAmount.module.css';
+
 import classNames from 'classnames';
 
 type CartAmountProps = {

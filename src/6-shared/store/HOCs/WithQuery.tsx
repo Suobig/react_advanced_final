@@ -1,15 +1,10 @@
-import {
-	Alert,
-	AlertTitle,
-	Box,
-	Button,
-	CircularProgress,
-	Container,
-} from '@mui/material';
 import { FC, ComponentType } from 'react';
-import { getMessageFromError } from '../../utils';
 import { SerializedError } from '@reduxjs/toolkit';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
+import { Box, CircularProgress, Container } from '@mui/material';
+
+import { getMessageFromError } from '../../utils';
+import { ErrorMessage } from '../../../6-shared/ui/ErrorMessage';
 
 interface WithQueryProps {
 	isLoading: boolean;
@@ -26,18 +21,13 @@ export const WithQuery = <T extends object>(
 			props;
 
 		if (isError) {
+			const message = getMessageFromError(
+				error,
+				'Неизвестная ошибка при получение данных'
+			);
 			return (
 				<Container>
-					<Alert
-						action={<Button onClick={refetch}>Retry</Button>}
-						severity='error'>
-						<AlertTitle>
-							{getMessageFromError(
-								error,
-								'Неизвестная ошибка при получение данных'
-							)}
-						</AlertTitle>
-					</Alert>
+					<ErrorMessage message={message} onRetry={refetch} />
 				</Container>
 			);
 		}
