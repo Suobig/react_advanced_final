@@ -1,4 +1,5 @@
 import s from './ProfilePage.module.css'
+
 import classNames from 'classnames'
 import { ButtonBack } from '../../../4-features/ButtonBack'
 import { WithProtection } from '../../../6-shared/store/HOCs/WithProtection'

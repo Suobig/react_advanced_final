@@ -34,7 +34,7 @@ export const WithQuery = <T extends object>(
 
 		if (isLoading) {
 			return (
-				<Box sx={{ display: 'flex', justifyContent: 'center' }}>
+				<Box sx={{ mt: 10, display: 'flex', justifyContent: 'center' }}>
 					<CircularProgress />
 				</Box>
 			)

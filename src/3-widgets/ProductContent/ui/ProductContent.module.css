@@ -1,4 +1,4 @@
-.header-title {
+.title {
 	font-size: 32px;
 	line-height: 1.5;
 	font-weight: 800;
@@ -11,13 +11,6 @@
 	gap: 100px;
 	margin-top: 23px;
 	margin-bottom: 40px;
-}
-
-.product__title {
-	margin-bottom: 20px;
-	font-weight: 800;
-	font-size: 24px;
-	line-height: 28px;
 }
 
 .product__img-wrapper {
@@ -136,10 +129,18 @@
 	margin-bottom: 12px;
 }
 
-.product__box {
+.description {
 	display: flex;
 	flex-direction: column;
 }
+
+.product__title {
+	margin-bottom: 20px;
+	font-weight: 800;
+	font-size: 24px;
+	line-height: 28px;
+}
+
 
 .product__favorite {
 	display: flex;

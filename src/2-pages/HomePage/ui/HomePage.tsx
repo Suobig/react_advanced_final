@@ -10,8 +10,6 @@ const CardListWithQuery = WithQuery(CardList)
 export const HomePage = WithProtection(() => {
 	const { products, isLoading, isError, error } = useProducts()
 
-	console.log({ products })
-
 	return (
 		<>
 			<Sort />
