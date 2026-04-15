@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { useDispatch } from 'react-redux';
 
+import { CartCounter } from '../../../4-features/card/CartCounter';
 import { cartActions } from '../../../6-shared/store/slices/cart';
-import { CartCounter } from '../../../6-shared/ui/CartCounter';
 import { ReactComponent as TrashIcon } from '../../../6-shared/assets/icons/trash.svg';
 
 type CartItemProps = {

@@ -3,12 +3,12 @@ import s from './Card.module.css';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 
-import { Price } from '../../Price';
+import { Price } from '../../../../6-shared/ui/Price';
 import { LikeButton } from '../../LikeButton';
-import { useAppSelector } from '../../../store/utils';
-import { cartSelectors } from '../../../store/slices/cart';
-import { useAddToCart } from '../../../hooks/useAddToCart';
-import { CartCounter } from '../../CartCounter';
+import { useAppSelector } from '../../../../6-shared/store/utils';
+import { cartSelectors } from '../../../../6-shared/store/slices/cart';
+import { useAddToCart } from '../../../../6-shared/hooks/useAddToCart';
+import { CartCounter } from '../../../../4-features/card/CartCounter';
 
 type CardProps = {
 	product: Product;

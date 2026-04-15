@@ -1,10 +1,10 @@
 import { RefObject, useCallback, useLayoutEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../store/utils';
-import { useProducts } from '../../../store/hooks/useProducts';
+import { useAppDispatch, useAppSelector } from '../../../6-shared/store/utils';
+import { useProducts } from '../../../6-shared/store/hooks/useProducts';
 import {
 	productsActions,
 	productsSelectors,
-} from '../../../store/slices/products';
+} from '../../../6-shared/store/slices/products';
 
 interface UseLoadMoreParams {
 	ref: RefObject<HTMLDivElement>;

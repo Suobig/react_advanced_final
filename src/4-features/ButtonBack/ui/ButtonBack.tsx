@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { ReactComponent as BackSvg } from './../../../assets/icons/back.svg';
+import { ReactComponent as BackSvg } from '../../../6-shared/assets/icons/back.svg';
 import { Button } from '@mui/material';
 
 export const ButtonBack = () => {

@@ -1,14 +1,15 @@
 import s from './LikeButton.module.css';
-import { ReactComponent as LikeSvg } from './../../../assets/icons/like.svg';
 import classNames from 'classnames';
-import { useAppSelector } from '../../../store/utils';
-import { userSelectors } from '../../../store/slices/user';
+import { toast } from 'react-toastify';
+
+import { useAppSelector } from '../../../../6-shared/store/utils';
+import { userSelectors } from '../../../../6-shared/store/slices/user';
 import {
 	useSetLikeProductMutation,
 	useDeleteLikeProductMutation,
 	IErrorResponse,
-} from '../../../store/api/productsApi';
-import { toast } from 'react-toastify';
+} from '../../../../6-shared/store/api/productsApi';
+import { ReactComponent as LikeSvg } from '../../../../6-shared/assets/icons/like.svg';
 
 type TLikeButtonProps = {
 	product: Product;

@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import s from './Header.module.css';
 import { Logo } from '../../../6-shared/ui/Logo';
-import { Search } from '../../../6-shared/ui/Search';
+import { Search } from '../../../4-features/Search';
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../../6-shared/store/utils';
 import { userSelectors } from '../../../6-shared/store/slices/user';

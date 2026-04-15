@@ -5,7 +5,7 @@ import { CartList } from '../../../3-widgets/CartList';
 import { CartAmount } from '../../../3-widgets/CartAmount';
 import { useAppSelector } from '../../../6-shared/store/utils';
 import { cartSelectors } from '../../../6-shared/store/slices/cart';
-import { ButtonBack } from '../../../6-shared/ui/ButtonBack';
+import { ButtonBack } from '../../../4-features/ButtonBack';
 
 export const CartPage = () => {
 	const products = useAppSelector(cartSelectors.getCartProducts);
