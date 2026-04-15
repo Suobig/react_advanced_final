@@ -21,7 +21,7 @@ export const ProductCartCounter = ({ product }: ProductCartCounterProps) => {
 	}
 
 	return (
-		<div className={classNames('product__btn-wrap')}>
+		<div className={classNames(s['product__btn-wrap'])}>
 			<div className={s['button-count']}>
 				<button className={s['button-count__minus']} onClick={handleCountMinus}>
 					-
