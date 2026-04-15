@@ -1,12 +1,12 @@
-import s from './ReviewList.module.css';
-import classNames from 'classnames';
+import s from './ReviewList.module.css'
+import classNames from 'classnames'
 
-import { ReviewForm } from '../../../3-widgets/ReviewForm';
-import { Rating } from '../../../6-shared/ui/Rating';
+import { ReviewForm } from '../../../3-widgets/ReviewForm'
+import { Rating } from '../../../6-shared/ui/Rating'
 
 type ReviewListProps = {
-	product: Product;
-};
+	product: Product
+}
 export const ReviewList = ({ product }: ReviewListProps) => {
 	return (
 		<div className={classNames(s['product__reviews'])}>
@@ -26,5 +26,5 @@ export const ReviewList = ({ product }: ReviewListProps) => {
 			<h2>Отзыв о товаре {product.name}</h2>
 			<ReviewForm />
 		</div>
-	);
-};
+	)
+}

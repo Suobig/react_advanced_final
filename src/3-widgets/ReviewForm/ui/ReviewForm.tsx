@@ -1,21 +1,21 @@
-import s from './ReviewForm.module.css';
+import s from './ReviewForm.module.css'
 
-import { useState, ChangeEvent } from 'react';
-import classNames from 'classnames';
+import { useState, ChangeEvent } from 'react'
+import classNames from 'classnames'
 
-import { Rating } from '../../../6-shared/ui/Rating';
+import { Rating } from '../../../6-shared/ui/Rating'
 
 export const ReviewForm = () => {
-	const [reviewText, setReviewText] = useState('');
-	const [rating, setRating] = useState(0);
+	const [reviewText, setReviewText] = useState('')
+	const [rating, setRating] = useState(0)
 
 	const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-		setReviewText(e.target.value);
-	};
+		setReviewText(e.target.value)
+	}
 
 	const handleClick = () => {
-		console.log('Отправка: ', { reviewText, rating });
-	};
+		console.log('Отправка: ', { reviewText, rating })
+	}
 
 	return (
 		<form className={s['form']}>
@@ -34,5 +34,5 @@ export const ReviewForm = () => {
 				Отправить отзыв
 			</button>
 		</form>
-	);
-};
+	)
+}

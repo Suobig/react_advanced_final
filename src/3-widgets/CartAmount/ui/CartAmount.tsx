@@ -1,21 +1,18 @@
-import s from './CartAmount.module.css';
+import s from './CartAmount.module.css'
 
-import classNames from 'classnames';
+import classNames from 'classnames'
 
 type CartAmountProps = {
-	products: CartProduct[];
-};
+	products: CartProduct[]
+}
 export const CartAmount = ({ products }: CartAmountProps) => {
-	const allPrice = products.reduce((acc, p) => p.price * p.count + acc, 0);
-	const allDiscount = products.reduce(
-		(acc, p) => p.discount * p.count + acc,
-		0
-	);
+	const allPrice = products.reduce((acc, p) => p.price * p.count + acc, 0)
+	const allDiscount = products.reduce((acc, p) => p.discount * p.count + acc, 0)
 
 	const handleSubmitCart = () => {
-		const order = products.map((p) => ({ id: p.id, count: p.count }));
-		console.log('Отправка заказа на сервер: ', JSON.stringify(order, null, 2));
-	};
+		const order = products.map((p) => ({ id: p.id, count: p.count }))
+		console.log('Отправка заказа на сервер: ', JSON.stringify(order, null, 2))
+	}
 
 	return (
 		<div className={classNames(s['cart-amount'])}>
@@ -60,5 +57,5 @@ export const CartAmount = ({ products }: CartAmountProps) => {
 				Оформить заказ
 			</button>
 		</div>
-	);
-};
+	)
+}

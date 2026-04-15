@@ -1,47 +1,47 @@
-import { RefObject, useCallback, useLayoutEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../../6-shared/store/utils';
-import { useProducts } from '../../../6-shared/store/hooks/useProducts';
+import { RefObject, useCallback, useLayoutEffect } from 'react'
+import { useAppDispatch, useAppSelector } from '../../../6-shared/store/utils'
+import { useProducts } from '../../../6-shared/store/hooks/useProducts'
 import {
 	productsActions,
 	productsSelectors,
-} from '../../../6-shared/store/slices/products';
+} from '../../../6-shared/store/slices/products'
 
 interface UseLoadMoreParams {
-	ref: RefObject<HTMLDivElement>;
+	ref: RefObject<HTMLDivElement>
 }
 export const useLoadMore = ({ ref }: UseLoadMoreParams) => {
-	const dispatch = useAppDispatch();
+	const dispatch = useAppDispatch()
 
-	const { products, isFetching, productsCount } = useProducts();
+	const { products, isFetching, productsCount } = useProducts()
 
-	const page = useAppSelector(productsSelectors.getPage);
+	const page = useAppSelector(productsSelectors.getPage)
 
-	const isEndOfList = products.length >= productsCount;
+	const isEndOfList = products.length >= productsCount
 
 	const fetchMoreProducts = useCallback(() => {
 		if (!isEndOfList && !isFetching) {
-			dispatch(productsActions.setPage(page + 1));
+			dispatch(productsActions.setPage(page + 1))
 		}
-	}, [isEndOfList, isFetching, page, dispatch]);
+	}, [isEndOfList, isFetching, page, dispatch])
 
 	useLayoutEffect(() => {
-		let observer: IntersectionObserver | undefined = undefined;
+		let observer: IntersectionObserver | undefined = undefined
 
 		if (!isEndOfList && products.length) {
-			const options: IntersectionObserverInit = { threshold: 0.5 };
+			const options: IntersectionObserverInit = { threshold: 0.5 }
 			const callback: IntersectionObserverCallback = (entries) => {
 				if (entries[0].isIntersecting) {
-					fetchMoreProducts();
+					fetchMoreProducts()
 				}
-			};
-			observer = new IntersectionObserver(callback, options);
-			ref.current && observer.observe(ref.current);
+			}
+			observer = new IntersectionObserver(callback, options)
+			ref.current && observer.observe(ref.current)
 		}
 
 		return () => {
-			observer?.disconnect();
-		};
-	}, [fetchMoreProducts, isEndOfList, products.length, ref]);
+			observer?.disconnect()
+		}
+	}, [fetchMoreProducts, isEndOfList, products.length, ref])
 
-	return { isEndOfList, isFetching };
-};
+	return { isEndOfList, isFetching }
+}

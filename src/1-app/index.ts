@@ -1,2 +1,2 @@
-export { App } from './App';
-export { router } from './router';
+export { App } from './App'
+export { router } from './router'

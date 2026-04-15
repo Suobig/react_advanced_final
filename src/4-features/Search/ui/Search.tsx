@@ -1,14 +1,14 @@
-import s from './Search.module.css';
+import s from './Search.module.css'
 
-import { useProductsSearchForm } from '../../../6-shared/hooks/usePostsSearchForm';
-import LogoIcon from '../../../6-shared/assets/icons/cross.svg';
+import { useProductsSearchForm } from '../../../6-shared/hooks/usePostsSearchForm'
+import LogoIcon from '../../../6-shared/assets/icons/cross.svg'
 
 export const Search = () => {
-	const { searchValue, setSearchValue } = useProductsSearchForm();
+	const { searchValue, setSearchValue } = useProductsSearchForm()
 
 	const handleClearSearchText = () => {
-		setSearchValue('');
-	};
+		setSearchValue('')
+	}
 
 	return (
 		<form className={s['search']}>
@@ -25,5 +25,5 @@ export const Search = () => {
 				</button>
 			)}
 		</form>
-	);
-};
+	)
+}

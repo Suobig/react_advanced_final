@@ -1,1 +1,1 @@
-export { LoadMore } from './ui/LoadMore';
+export { LoadMore } from './ui/LoadMore'

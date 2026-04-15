@@ -1,14 +1,14 @@
-import s from './CartPage.module.css';
-import classNames from 'classnames';
+import s from './CartPage.module.css'
+import classNames from 'classnames'
 
-import { CartList } from '../../../3-widgets/CartList';
-import { CartAmount } from '../../../3-widgets/CartAmount';
-import { useAppSelector } from '../../../6-shared/store/utils';
-import { cartSelectors } from '../../../6-shared/store/slices/cart';
-import { ButtonBack } from '../../../4-features/ButtonBack';
+import { CartList } from '../../../3-widgets/CartList'
+import { CartAmount } from '../../../3-widgets/CartAmount'
+import { useAppSelector } from '../../../6-shared/store/utils'
+import { cartSelectors } from '../../../6-shared/store/slices/cart'
+import { ButtonBack } from '../../../4-features/ButtonBack'
 
 export const CartPage = () => {
-	const products = useAppSelector(cartSelectors.getCartProducts);
+	const products = useAppSelector(cartSelectors.getCartProducts)
 
 	if (!products.length) {
 		return (
@@ -16,7 +16,7 @@ export const CartPage = () => {
 				<ButtonBack />
 				<h1 className='header-title'>Товаров нет в корзине</h1>
 			</>
-		);
+		)
 	}
 
 	return (
@@ -29,5 +29,5 @@ export const CartPage = () => {
 				<CartAmount products={products} />
 			</div>
 		</div>
-	);
-};
+	)
+}

@@ -1,13 +1,13 @@
-import s from './CardList.module.css';
-import { Card } from '../../../4-features/card/Card';
+import s from './CardList.module.css'
+import { Card } from '../../../4-features/Card'
 
-type CardListProps = {
-	title: string;
-	products: Product[];
-};
+interface CardListProps {
+	title: string
+	products: Product[]
+}
 export const CardList = ({ title, products }: CardListProps) => {
 	if (!products.length) {
-		return <h1 className='header-title'>Товар не найден</h1>;
+		return <h1 className='header-title'>Товар не найден</h1>
 	}
 
 	return (
@@ -21,5 +21,5 @@ export const CardList = ({ title, products }: CardListProps) => {
 				))}
 			</div>
 		</div>
-	);
-};
+	)
+}

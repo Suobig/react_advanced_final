@@ -1,12 +1,12 @@
-import { ChangeEvent } from 'react';
-import { useSort } from '../../../6-shared/hooks/useSort';
+import { ChangeEvent } from 'react'
+import { useSort } from '../../../6-shared/hooks/useSort'
 
 export const Sort = () => {
-	const { sort, setSort, sortParams } = useSort();
+	const { sort, setSort, sortParams } = useSort()
 	const handleSortSelect = (e: ChangeEvent<HTMLSelectElement>) => {
-		const newSort = e.target.value as Sort;
-		setSort(newSort);
-	};
+		const newSort = e.target.value as Sort
+		setSort(newSort)
+	}
 	return (
 		<select value={sort} onChange={handleSortSelect}>
 			{sortParams.map((p) => (
@@ -15,5 +15,5 @@ export const Sort = () => {
 				</option>
 			))}
 		</select>
-	);
-};
+	)
+}

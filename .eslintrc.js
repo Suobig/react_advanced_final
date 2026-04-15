@@ -38,7 +38,7 @@ module.exports = {
 		'plugin:eslint-comments/recommended',
 	],
 	rules: {
-		semi: [2, 'always'],
+		semi: [2, 'never', { beforeStatementContinuationChars: 'always' }],
 		quotes: [2, 'single', { avoidEscape: true }],
 		'no-unused-vars': 'off',
 		'@typescript-eslint/no-unused-vars': ['error'],
@@ -48,4 +48,4 @@ module.exports = {
 		'react/react-in-jsx-scope': 'off',
 		'@typescript-eslint/explicit-module-boundary-types': 'off',
 	},
-};
+}

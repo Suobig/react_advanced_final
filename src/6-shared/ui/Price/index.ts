@@ -1,1 +1,1 @@
-export { Price } from './ui/Price';
+export { Price } from './ui/Price'

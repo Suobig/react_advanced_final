@@ -100,6 +100,7 @@
 }
 
 .card__link {
+	flex-grow: 1;
 	color: currentcolor;
 	text-decoration: none;
 }
@@ -119,11 +120,16 @@
 
 .card__btn_type_primary {
 	background-color: #ffe44d;
+	cursor: pointer;
 }
 
 .card__btn_type_primary:hover {
-	color: #f44336;
+	color: #f7f7f7;
 	background-color: #ffaa0d;
+}
+
+.card__btn_disabled {
+	background-color: transparent;
 }
 
 .tag {

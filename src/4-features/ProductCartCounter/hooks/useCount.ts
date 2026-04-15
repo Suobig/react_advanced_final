@@ -1,30 +1,23 @@
-import { useState, ChangeEvent } from 'react';
+import { useState, ChangeEvent } from 'react'
+import { getValidCount } from '../../../6-shared/utils/getValidCount'
 
-const MIN_COUNT = 1;
-const MAX_COUNT = 99;
-
-export const useCount = () => {
-	const [count, setCount] = useState(1);
+export const useCount = (stock: number) => {
+	const [count, setCount] = useState(1)
 
 	const handleCount = (e: ChangeEvent<HTMLInputElement>) => {
-		const newCount = +e.target.value;
-		const validCount =
-			newCount > MAX_COUNT
-				? MAX_COUNT
-				: newCount < MIN_COUNT
-				? MIN_COUNT
-				: newCount;
-		setCount(validCount);
-	};
+		const newCount = +e.target.value
+		const validCount = getValidCount(newCount, stock)
+		setCount(validCount)
+	}
 	const handleCountMinus = () => {
-		const newCount = count - 1;
-		const validCount = newCount < MIN_COUNT ? MIN_COUNT : newCount;
-		setCount(validCount);
-	};
+		const newCount = count - 1
+		const validCount = getValidCount(newCount, stock)
+		setCount(validCount)
+	}
 	const handleCountPlus = () => {
-		const newCount = count + 1;
-		const validCount = newCount > MAX_COUNT ? MAX_COUNT : newCount;
-		setCount(validCount);
-	};
-	return { count, handleCount, handleCountMinus, handleCountPlus };
-};
+		const newCount = count + 1
+		const validCount = getValidCount(newCount, stock)
+		setCount(validCount)
+	}
+	return { count, handleCount, handleCountMinus, handleCountPlus }
+}

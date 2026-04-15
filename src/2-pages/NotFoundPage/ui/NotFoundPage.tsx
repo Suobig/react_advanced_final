@@ -1,7 +1,7 @@
-import s from './NotFoudPage.module.css';
+import s from './NotFoudPage.module.css'
 
-import { Link } from 'react-router-dom';
-import { Button } from '@mui/material';
+import { Link } from 'react-router-dom'
+import { Button } from '@mui/material'
 
 export const NotFoundPage = () => {
 	return (
@@ -11,5 +11,5 @@ export const NotFoundPage = () => {
 				<Button variant='contained'>Перейти на главную</Button>
 			</Link>
 		</div>
-	);
-};
+	)
+}

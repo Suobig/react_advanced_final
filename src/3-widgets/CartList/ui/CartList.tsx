@@ -1,11 +1,11 @@
-import s from './CartList.module.css';
+import s from './CartList.module.css'
 
-import { CartItem } from '../../CartItem';
-import classNames from 'classnames';
+import { CartItem } from '../../CartItem'
+import classNames from 'classnames'
 
 type CartListProps = {
-	products: CartProduct[];
-};
+	products: CartProduct[]
+}
 export const CartList = ({ products }: CartListProps) => {
 	return (
 		<div className={classNames(s['cart-list'])}>
@@ -13,5 +13,5 @@ export const CartList = ({ products }: CartListProps) => {
 				<CartItem product={p} key={p.id} />
 			))}
 		</div>
-	);
-};
+	)
+}

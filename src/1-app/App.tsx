@@ -1,13 +1,13 @@
-import { Outlet } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
+import { Outlet } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
 
-import { Header } from '../3-widgets/Header';
-import { Footer } from '../3-widgets/Footer';
+import { Header } from '../3-widgets/Header'
+import { Footer } from '../3-widgets/Footer'
 
-import 'react-toastify/dist/ReactToastify.css';
-import './styles/normalize.css';
-import './styles/styles.css';
-import { Box } from '@mui/material';
+import 'react-toastify/dist/ReactToastify.css'
+import './styles/normalize.css'
+import './styles/styles.css'
+import { Box } from '@mui/material'
 
 export const App = () => {
 	return (
@@ -25,5 +25,5 @@ export const App = () => {
 			/>
 			<Footer />
 		</Box>
-	);
-};
+	)
+}

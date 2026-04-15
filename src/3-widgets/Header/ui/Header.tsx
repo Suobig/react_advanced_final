@@ -1,24 +1,24 @@
-import classNames from 'classnames';
-import s from './Header.module.css';
-import { Logo } from '../../../6-shared/ui/Logo';
-import { Search } from '../../../4-features/Search';
-import { Link } from 'react-router-dom';
-import { useAppSelector } from '../../../6-shared/store/utils';
-import { userSelectors } from '../../../6-shared/store/slices/user';
-import { isLiked } from '../../../6-shared/utils';
-import { useProducts } from '../../../6-shared/store/hooks/useProducts';
-import { cartSelectors } from '../../../6-shared/store/slices/cart';
+import classNames from 'classnames'
+import s from './Header.module.css'
+import { Logo } from '../../../6-shared/ui/Logo'
+import { Search } from '../../../4-features/Search'
+import { Link } from 'react-router-dom'
+import { useAppSelector } from '../../../6-shared/store/utils'
+import { userSelectors } from '../../../6-shared/store/slices/user'
+import { isLiked } from '../../../6-shared/utils'
+import { useProducts } from '../../../6-shared/store/hooks/useProducts'
+import { cartSelectors } from '../../../6-shared/store/slices/cart'
 
 export const Header = () => {
-	const { products } = useProducts();
-	const user = useAppSelector(userSelectors.getUser);
-	const cartProducts = useAppSelector(cartSelectors.getCartProducts);
+	const { products } = useProducts()
+	const user = useAppSelector(userSelectors.getUser)
+	const cartProducts = useAppSelector(cartSelectors.getCartProducts)
 
 	const likeCount = products.filter((product) =>
 		isLiked(product.likes, user?.id)
-	).length;
+	).length
 
-	const accessToken = useAppSelector(userSelectors.getAccessToken);
+	const accessToken = useAppSelector(userSelectors.getAccessToken)
 
 	return (
 		<header className={s.header}>
@@ -79,5 +79,5 @@ export const Header = () => {
 				</div>
 			</div>
 		</header>
-	);
-};
+	)
+}

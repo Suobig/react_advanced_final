@@ -1,13 +1,15 @@
-import { useCount } from '../hooks/useCount';
-import s from './CartCounter.module.css';
-import classNames from 'classnames';
+import s from './CartCounter.module.css'
 
-type TCartCounter = {
-	productId: string;
-};
-export const CartCounter = ({ productId }: TCartCounter) => {
+import classNames from 'classnames'
+
+import { useCount } from '../model/useCount'
+
+interface CartCounterProps {
+	id: string
+}
+export const CartCounter = ({ id }: CartCounterProps) => {
 	const { count, stock, handleSetCount, handleIncrement, handleDecrement } =
-		useCount(productId);
+		useCount(id)
 
 	return (
 		<>
@@ -31,5 +33,5 @@ export const CartCounter = ({ productId }: TCartCounter) => {
 				</button>
 			</div>
 		</>
-	);
-};
+	)
+}

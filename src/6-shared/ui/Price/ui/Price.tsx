@@ -1,10 +1,10 @@
-import classNames from 'classnames';
-import s from './Price.module.css';
+import s from './Price.module.css'
+import classNames from 'classnames'
 
 type TPriceProps = {
-	price: number;
-	discountPrice: number;
-};
+	price: number
+	discountPrice: number
+}
 
 export const Price = ({ price, discountPrice }: TPriceProps) => {
 	return (
@@ -16,5 +16,5 @@ export const Price = ({ price, discountPrice }: TPriceProps) => {
 				{`${price - discountPrice}₽`}
 			</span>
 		</div>
-	);
-};
+	)
+}

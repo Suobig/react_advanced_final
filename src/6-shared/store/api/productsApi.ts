@@ -1,37 +1,37 @@
-import { createApi } from '@reduxjs/toolkit/query/react';
-import { customBaseQuery } from './config';
+import { createApi } from '@reduxjs/toolkit/query/react'
+import { customBaseQuery } from './config'
 
 export interface IErrorResponse {
-	data: { statusCode: number; message: string; error: string };
-	status: number;
+	data: { statusCode: number; message: string; error: string }
+	status: number
 }
 
 interface ProductsResponse {
-	products: Product[];
-	length: number;
+	products: Product[]
+	length: number
 }
 
 interface SetLikeResponse {
 	like: {
-		id: string;
-		userId: string;
-		productId: string;
-	};
-	message: string;
+		id: string
+		userId: string
+		productId: string
+	}
+	message: string
 }
 interface DeleteLikeResponse {
 	product: {
-		id: string;
-		userId: string;
-		productId: string;
-	};
-	message: string;
+		id: string
+		userId: string
+		productId: string
+	}
+	message: string
 }
 interface ProductRequest {
-	page: number;
-	perPage?: number;
-	sort: Sort;
-	searchText: string;
+	page: number
+	perPage?: number
+	sort: Sort
+	searchText: string
 }
 
 export const productsApi = createApi({
@@ -48,7 +48,7 @@ export const productsApi = createApi({
 						searchTerm: searchTerm.length ? searchTerm : undefined,
 						perPage: perPage ? page * perPage : undefined,
 					},
-				};
+				}
 			},
 			providesTags: [{ type: 'Products', id: 'list' }],
 		}),
@@ -102,11 +102,11 @@ export const productsApi = createApi({
 			],
 		}),
 	}),
-});
+})
 
 export const {
 	useGetProductQuery,
 	useGetProductsQuery,
 	useSetLikeProductMutation,
 	useDeleteLikeProductMutation,
-} = productsApi;
+} = productsApi

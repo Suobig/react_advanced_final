@@ -1,11 +1,11 @@
-import { CircularProgress, Stack } from '@mui/material';
-import { useRef } from 'react';
-import { useLoadMore } from '../hooks/useLoadMore';
-import { SuccessMessage } from '../../../6-shared/ui/SuccesMessage';
+import { CircularProgress, Stack } from '@mui/material'
+import { useRef } from 'react'
+import { useLoadMore } from '../hooks/useLoadMore'
+import { SuccessMessage } from '../../../6-shared/ui/SuccesMessage'
 
 export const LoadMore = () => {
-	const ref = useRef<HTMLDivElement>(null);
-	const { isEndOfList, isFetching } = useLoadMore({ ref });
+	const ref = useRef<HTMLDivElement>(null)
+	const { isEndOfList, isFetching } = useLoadMore({ ref })
 
 	return (
 		<Stack
@@ -17,5 +17,5 @@ export const LoadMore = () => {
 			{isFetching && <CircularProgress />}
 			{isEndOfList && <SuccessMessage message='End of list!' />}
 		</Stack>
-	);
-};
+	)
+}

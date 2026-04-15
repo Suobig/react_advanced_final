@@ -1,1 +1,1 @@
-export { Sort } from './ui/Sort';
+export { Sort } from './ui/Sort'

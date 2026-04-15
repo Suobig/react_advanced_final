@@ -1,23 +1,25 @@
-import s from './Card.module.css';
+import s from './Card.module.css'
 
-import classNames from 'classnames';
-import { Link } from 'react-router-dom';
+import classNames from 'classnames'
+import { Link } from 'react-router-dom'
 
-import { Price } from '../../../../6-shared/ui/Price';
-import { LikeButton } from '../../LikeButton';
-import { useAppSelector } from '../../../../6-shared/store/utils';
-import { cartSelectors } from '../../../../6-shared/store/slices/cart';
-import { useAddToCart } from '../../../../6-shared/hooks/useAddToCart';
-import { CartCounter } from '../../../../4-features/card/CartCounter';
+import { Price } from '../../../6-shared/ui/Price'
+import { LikeButton } from '../../LikeButton'
+import { useAppSelector } from '../../../6-shared/store/utils'
+import { cartSelectors } from '../../../6-shared/store/slices/cart'
+import { useAddToCart } from '../../../6-shared/hooks/useAddToCart'
+import { CartCounter } from '../../CartCounter'
 
 type CardProps = {
-	product: Product;
-};
+	product: Product
+}
 export const Card = ({ product }: CardProps) => {
-	const { discount, price, name, tags, id, images } = product;
-	const cartProducts = useAppSelector(cartSelectors.getCartProducts);
-	const isProductInCart = cartProducts.some((p) => p.id === id);
-	const { addProductToCart } = useAddToCart();
+	const { discount, price, name, tags, id, images, stock } = product
+	const cartProducts = useAppSelector(cartSelectors.getCartProducts)
+	const isProductInCart = cartProducts.some((p) => p.id === id)
+	const isOutOfStock = stock === 0
+
+	const { addProductToCart } = useAddToCart()
 
 	return (
 		<article className={s['card']}>
@@ -54,19 +56,20 @@ export const Card = ({ product }: CardProps) => {
 				</div>
 			</Link>
 			{isProductInCart ? (
-				<CartCounter productId={id} />
+				<CartCounter id={id} />
 			) : (
 				<button
 					onClick={() => addProductToCart({ ...product, count: 1 })}
-					disabled={isProductInCart}
+					disabled={isOutOfStock}
 					className={classNames(
 						s['card__cart'],
 						s['card__btn'],
-						s['card__btn_type_primary']
+						{ [s['card__btn_type_primary']]: !isOutOfStock },
+						{ [s['card__btn_disabled']]: isOutOfStock }
 					)}>
-					В корзину
+					{isOutOfStock ? 'Товар закончился' : 'В корзину'}
 				</button>
 			)}
 		</article>
-	);
-};
+	)
+}

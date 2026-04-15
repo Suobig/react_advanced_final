@@ -1,21 +1,26 @@
-import { ReactComponent as Star } from '../../../assets/icons/star.svg';
+import { ReactComponent as Star } from '../../../assets/icons/star.svg'
 
-type TRating = {
-	rating?: number;
-	isEdit?: boolean;
-	onChange?: (rating: number) => void;
-};
-export const Rating = ({ rating = 0, isEdit = false, onChange }: TRating) => {
+interface RatingProps {
+	rating?: number
+	isEdit?: boolean
+	onChange?: (rating: number) => void
+}
+
+export const Rating = ({
+	rating = 0,
+	isEdit = false,
+	onChange,
+}: RatingProps) => {
 	return (
 		<div>
 			{[...Array(5)].map((_e, i) => (
 				<span key={i} style={{ cursor: isEdit ? 'pointer' : 'default' }}>
 					<Star
-						onClick={() => onChange?.(i)}
+						onClick={() => isEdit && onChange?.(i)}
 						fill={i <= rating ? 'gold' : 'gray'}
 					/>
 				</span>
 			))}
 		</div>
-	);
-};
+	)
+}

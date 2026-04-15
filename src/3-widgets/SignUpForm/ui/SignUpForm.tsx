@@ -1,6 +1,6 @@
-import { FC } from 'react';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { FC } from 'react'
+import { Link as RouterLink, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import {
 	Avatar,
 	Box,
@@ -8,25 +8,25 @@ import {
 	Link,
 	TextField,
 	Typography,
-} from '@mui/material';
-import LoadingButton from '@mui/lab/LoadingButton';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import { toast } from 'react-toastify';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { SignUpFormValues } from '../utils/types';
-import { signUpFormSchema } from '../utils/validator';
-import { userActions } from '../../../6-shared/store/slices/user';
-import { getMessageFromError } from '../../../6-shared/utils';
-import { useSignUpMutation } from '../../../6-shared/store/api/authApi';
+} from '@mui/material'
+import LoadingButton from '@mui/lab/LoadingButton'
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
+import { Controller, SubmitHandler, useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { SignUpFormValues } from '../utils/types'
+import { signUpFormSchema } from '../utils/validator'
+import { userActions } from '../../../6-shared/store/slices/user'
+import { getMessageFromError } from '../../../6-shared/utils'
+import { useSignUpMutation } from '../../../6-shared/store/api/authApi'
 
 export const SignUpForm: FC = () => {
-	const dispatch = useDispatch();
+	const dispatch = useDispatch()
 	// navigate поможет сделать редирект в нужный момент
-	const navigate = useNavigate();
+	const navigate = useNavigate()
 	// Из хука useSignUpMutation (был получен путем автогенерации)
 	// достаем функцию, которая будет (регистрировать пользователя) делать POST-запрос к нашем серверу)
-	const [signUpRequestFn] = useSignUpMutation();
+	const [signUpRequestFn] = useSignUpMutation()
 	// инициализируем react-hook-form
 	const {
 		// control понадобиться, чтобы подружить react-hook-form и компоненты из MUI
@@ -42,36 +42,36 @@ export const SignUpForm: FC = () => {
 		// react-hook-form умеет работать со многими библиотеками
 		// валидации, мы используем yup
 		resolver: yupResolver(signUpFormSchema),
-	});
+	})
 
 	const submitHandler: SubmitHandler<SignUpFormValues> = async (values) => {
 		try {
 			// метод "unwrap" помогает убрать вспомогательные обертки
 			// RTK, которые обрабатывают ошибки. Теперь ошибки обрабатываем мы
 			// с помощью конструкции try...catch. В этом случае нам так удобней
-			const response = await signUpRequestFn(values).unwrap();
+			const response = await signUpRequestFn(values).unwrap()
 
-			dispatch(userActions.setUser(response.user));
+			dispatch(userActions.setUser(response.user))
 			dispatch(
 				userActions.setAccessToken({ accessToken: response.accessToken })
-			);
+			)
 
 			// Выводим уведомление, что пользователь успешно зарегался
 			// Есть куча библиотек для отображения "Тостеров". Мы используем
 			// react-toastify — https://github.com/fkhadra/react-toastify#readme
-			toast.success('Вы успешно зарегистрированы!');
-			navigate('/');
+			toast.success('Вы успешно зарегистрированы!')
+			navigate('/')
 		} catch (error) {
 			// Если произошла ошибка, то выводим уведомление
-			console.log({ error });
+			console.log({ error })
 			toast.error(
 				getMessageFromError(
 					error,
 					'Не известная ошибка при регистрации пользователя'
 				)
-			);
+			)
 		}
-	};
+	}
 
 	return (
 		<Container component='main' maxWidth='xs'>
@@ -149,5 +149,5 @@ export const SignUpForm: FC = () => {
 				</Box>
 			</Box>
 		</Container>
-	);
-};
+	)
+}

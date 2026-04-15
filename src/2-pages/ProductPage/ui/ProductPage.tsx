@@ -1,37 +1,37 @@
-import s from './ProductPage.module.css';
+import s from './ProductPage.module.css'
 
-import { useLocation } from 'react-router-dom';
-import classNames from 'classnames';
+import { useLocation } from 'react-router-dom'
+import classNames from 'classnames'
 
-import { ReviewList } from '../../../3-widgets/ReviewList/ui/ReviewList';
-import { ButtonBack } from '../../../4-features/ButtonBack';
-import { LikeButton } from '../../../4-features/card/LikeButton';
-import { CartCounter } from '../../../4-features/card/CartCounter';
-import { ProductCartCounter } from '../../../4-features/ProductCartCounter';
-import { WithProtection } from '../../../6-shared/store/HOCs/WithProtection';
-import { useGetProductQuery } from '../../../6-shared/store/api/productsApi';
-import { useAppSelector } from '../../../6-shared/store/utils';
-import { cartSelectors } from '../../../6-shared/store/slices/cart';
-import truckSVG from '../../../6-shared/assets/icons/truck.svg';
-import qualitySVG from '../../../6-shared/assets/icons/quality.svg';
-import { Rating } from '../../../6-shared/ui/Rating';
+import { ReviewList } from '../../../3-widgets/ReviewList/ui/ReviewList'
+import { ButtonBack } from '../../../4-features/ButtonBack'
+import { LikeButton } from '../../../4-features/LikeButton'
+import { CartCounter } from '../../../4-features/CartCounter'
+import { ProductCartCounter } from '../../../4-features/ProductCartCounter'
+import { WithProtection } from '../../../6-shared/store/HOCs/WithProtection'
+import { useGetProductQuery } from '../../../6-shared/store/api/productsApi'
+import { useAppSelector } from '../../../6-shared/store/utils'
+import { cartSelectors } from '../../../6-shared/store/slices/cart'
+import truckSVG from '../../../6-shared/assets/icons/truck.svg'
+import qualitySVG from '../../../6-shared/assets/icons/quality.svg'
+import { Rating } from '../../../6-shared/ui/Rating'
 
 export const ProductPage = WithProtection(() => {
-	const location = useLocation();
-	const { pathname } = location;
-	const productId = pathname.split('/').at(-1) || '';
+	const location = useLocation()
+	const { pathname } = location
+	const productId = pathname.split('/').at(-1) || ''
 
-	const cartProducts = useAppSelector(cartSelectors.getCartProducts);
+	const cartProducts = useAppSelector(cartSelectors.getCartProducts)
 
-	const { data: product } = useGetProductQuery({ id: productId });
+	const { data: product } = useGetProductQuery({ id: productId })
 
 	if (!product) {
-		return <></>;
+		return <></>
 	}
 
-	const { id, name, images, description, price, discount } = product;
+	const { id, name, images, description, price, discount } = product
 
-	const isProductInCart = !!cartProducts.find((p) => p.id === id);
+	const isProductInCart = !!cartProducts.find((p) => p.id === id)
 
 	return (
 		<>
@@ -56,7 +56,7 @@ export const ProductPage = WithProtection(() => {
 					</div>
 
 					{isProductInCart ? (
-						<CartCounter productId={id} />
+						<CartCounter id={id} />
 					) : (
 						<ProductCartCounter product={product} />
 					)}
@@ -129,5 +129,5 @@ export const ProductPage = WithProtection(() => {
 			</div>
 			<ReviewList product={product} />
 		</>
-	);
-});
+	)
+})
