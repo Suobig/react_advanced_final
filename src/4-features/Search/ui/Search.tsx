@@ -1,7 +1,7 @@
 import s from './Search.module.css'
 
 import { useProductsSearchForm } from '../../../6-shared/hooks/usePostsSearchForm'
-import LogoIcon from '../../../6-shared/assets/icons/cross.svg'
+import { ReactComponent as LogoIcon } from '../../../6-shared/assets/icons/cross.svg'
 
 export const Search = () => {
 	const { searchValue, setSearchValue } = useProductsSearchForm()
