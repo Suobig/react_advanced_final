@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import { Link as RouterLink, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import {
@@ -32,6 +32,7 @@ export const SignUpForm: FC = () => {
 		control,
 		handleSubmit,
 		formState: { errors, isValid, isSubmitting, isSubmitted },
+		setFocus,
 		// с помощью generic подсказываем react-hook-form, какие поля содержит наша форма
 	} = useForm<SignUpFormValues>({
 		defaultValues: {
@@ -42,6 +43,10 @@ export const SignUpForm: FC = () => {
 		// валидации, мы используем yup
 		resolver: yupResolver(signUpFormSchema),
 	})
+
+	useEffect(() => {
+		setFocus('email')
+	}, [setFocus])
 
 	const submitHandler: SubmitHandler<SignUpFormValues> = async (values) => {
 		try {
@@ -98,35 +103,43 @@ export const SignUpForm: FC = () => {
 					<Controller
 						name='email'
 						control={control}
-						render={({ field }) => (
-							<TextField
-								margin='normal'
-								label='Email Address'
-								type='email'
-								fullWidth
-								required
-								autoComplete='email'
-								error={!!errors.email?.message}
-								helperText={errors.email?.message}
-								{...field}
-							/>
-						)}
+						render={({ field }) => {
+							const { ref, ...otherFieldProps } = field
+							return (
+								<TextField
+									margin='normal'
+									label='Email Address'
+									type='email'
+									fullWidth
+									required
+									autoComplete='email'
+									error={!!errors.email?.message}
+									helperText={errors.email?.message}
+									inputRef={ref}
+									{...otherFieldProps}
+								/>
+							)
+						}}
 					/>
 					<Controller
 						name='password'
 						control={control}
-						render={({ field }) => (
-							<TextField
-								label='Password'
-								type='password'
-								error={!!errors.password?.message}
-								helperText={errors.password?.message}
-								margin='normal'
-								fullWidth
-								required
-								{...field}
-							/>
-						)}
+						render={({ field }) => {
+							const { ref, ...otherFieldProps } = field
+							return (
+								<TextField
+									label='Password'
+									type='password'
+									error={!!errors.password?.message}
+									helperText={errors.password?.message}
+									inputRef={ref}
+									margin='normal'
+									fullWidth
+									required
+									{...otherFieldProps}
+								/>
+							)
+						}}
 					/>
 
 					<LoadingButton

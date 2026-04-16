@@ -8,10 +8,15 @@ import { Footer } from '../3-widgets/Footer'
 import 'react-toastify/dist/ReactToastify.css'
 import './styles/normalize.css'
 import './styles/styles.css'
+import { useAnalytics } from '../6-shared/hooks/useAnalytics'
 
 export const App = () => {
+	const [onClick] = useAnalytics()
+
 	return (
-		<Box sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+		<Box
+			sx={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}
+			onClick={onClick}>
 			<Header />
 			<Box sx={{ p: 3, flexGrow: 1 }}>
 				<Outlet />

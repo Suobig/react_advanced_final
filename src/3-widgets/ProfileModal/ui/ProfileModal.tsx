@@ -3,6 +3,7 @@ import s from './ProfileModal.module.css'
 import classNames from 'classnames'
 
 import { Modal } from '../../../6-shared/ui/Modal/Modal'
+import { useAnalytics } from '../../../6-shared/hooks/useAnalytics'
 
 interface ProfileModalProps {
 	isOpen: boolean
@@ -10,10 +11,12 @@ interface ProfileModalProps {
 }
 
 export const ProfileModal = (props: ProfileModalProps) => {
+	const [onAnalyticsClick] = useAnalytics()
+
 	const { isOpen, onClose } = props
 
 	return (
-		<Modal isOpen={isOpen} onClose={onClose}>
+		<Modal isOpen={isOpen} onClose={onClose} onClick={onAnalyticsClick}>
 			<h1 className={s['form__title']}>Мои данные</h1>
 			<form className={classNames(s['form'], s['form'])}>
 				<div className={s['form__row']}>

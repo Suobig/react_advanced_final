@@ -2,6 +2,7 @@ import s from './Modal.module.css'
 
 import {
 	KeyboardEventHandler,
+	MouseEventHandler,
 	ReactNode,
 	useCallback,
 	useEffect,
@@ -14,6 +15,7 @@ interface ModalProps {
 	children: ReactNode
 	isOpen: boolean
 	onClose: () => void
+	onClick?: MouseEventHandler
 }
 
 const rootElement = document.getElementById('root')
@@ -39,7 +41,7 @@ export const Modal = (props: ModalProps) => {
 }
 
 const ModalInner = function ModalInner(props: Omit<ModalProps, 'isOpen'>) {
-	const { onClose, children } = props
+	const { onClose, onClick, children } = props
 
 	const modalRef = useRef<HTMLDivElement | null>(null)
 
@@ -49,16 +51,19 @@ const ModalInner = function ModalInner(props: Omit<ModalProps, 'isOpen'>) {
 
 	const handleKeyDown = useCallback<KeyboardEventHandler>(
 		(e) => {
-			if (
-				e.key === 'Escape' &&
-				window.confirm(
-					'Изменения не будут сохранены. Вы уверены что хотите выйти?'
-				)
-			) {
+			if (e.key === 'Escape') {
 				onClose()
 			}
 		},
 		[onClose]
+	)
+
+	const handleClick = useCallback<MouseEventHandler>(
+		(e) => {
+			e.stopPropagation()
+			onClick?.(e)
+		},
+		[onClick]
 	)
 
 	return (
@@ -71,7 +76,7 @@ const ModalInner = function ModalInner(props: Omit<ModalProps, 'isOpen'>) {
 			<div
 				ref={modalRef}
 				className={s.content}
-				onClick={(e) => e.stopPropagation()}
+				onClick={handleClick}
 				onKeyDown={handleKeyDown}
 				role='button'
 				tabIndex={0}>
