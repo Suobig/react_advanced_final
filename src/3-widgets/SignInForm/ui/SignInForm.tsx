@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react'
+import { type FC, useEffect } from 'react'
 import {
 	Avatar,
 	Box,
@@ -8,18 +8,18 @@ import {
 	Typography,
 } from '@mui/material'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
-import { Controller, SubmitHandler, useForm } from 'react-hook-form'
+import { Controller, type SubmitHandler, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import LoadingButton from '@mui/lab/LoadingButton'
 import { toast } from 'react-toastify'
 import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom'
 
 import { useDispatch } from 'react-redux'
-import { SignInFormValues } from '../utils/types'
+import { type SignInFormValues } from '../utils/types'
 import { signInFormSchema } from '../utils/validator'
-import { useSignInMutation } from '../../../6-shared/store/api/authApi'
-import { userActions } from '../../../6-shared/store/slices/user'
-import { getMessageFromError } from '../../../6-shared/utils'
+import { useSignInMutation } from '6-shared/store/api/authApi'
+import { userActions } from '6-shared/store/slices/user'
+import { getMessageFromError } from '6-shared/utils'
 
 export const SignInForm: FC = () => {
 	const dispatch = useDispatch()

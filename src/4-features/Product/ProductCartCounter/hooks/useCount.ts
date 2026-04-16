@@ -1,5 +1,5 @@
-import { useState, ChangeEvent, useCallback } from 'react'
-import { getValidCount } from '../../../../6-shared/utils/getValidCount'
+import { useState, type ChangeEvent, useCallback } from 'react'
+import { getValidCount } from '6-shared/utils/getValidCount'
 
 export const useCount = (stock: number) => {
 	const [count, setCount] = useState(1)

@@ -1,6 +1,6 @@
 import { memo } from 'react'
 
-import { ReactComponent as Star } from '../../../assets/icons/star.svg'
+import Star from '../../../assets/icons/star.svg?react'
 
 interface RatingProps {
 	rating?: number

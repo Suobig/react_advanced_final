@@ -2,13 +2,13 @@ import { Outlet } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import { Box } from '@mui/material'
 
-import { Header } from '../3-widgets/Header'
-import { Footer } from '../3-widgets/Footer'
+import { Header } from '3-widgets/Header'
+import { Footer } from '3-widgets/Footer'
 
 import 'react-toastify/dist/ReactToastify.css'
 import './styles/normalize.css'
 import './styles/styles.css'
-import { useAnalytics } from '../6-shared/hooks/useAnalytics'
+import { useAnalytics } from '6-shared/hooks/useAnalytics'
 
 export const App = () => {
 	const [onClick] = useAnalytics()

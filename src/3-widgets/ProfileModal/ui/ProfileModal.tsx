@@ -2,8 +2,8 @@ import s from './ProfileModal.module.css'
 
 import classNames from 'classnames'
 
-import { Modal } from '../../../6-shared/ui/Modal/Modal'
-import { useAnalytics } from '../../../6-shared/hooks/useAnalytics'
+import { Modal } from '6-shared/ui/Modal/Modal'
+import { useAnalytics } from '6-shared/hooks/useAnalytics'
 
 interface ProfileModalProps {
 	isOpen: boolean

@@ -1,7 +1,7 @@
 import { CircularProgress, Stack } from '@mui/material'
 import { useRef } from 'react'
 import { useLoadMore } from '../hooks/useLoadMore'
-import { SuccessMessage } from '../../../6-shared/ui/SuccesMessage'
+import { SuccessMessage } from '6-shared/ui/SuccesMessage'
 
 export const LoadMore = () => {
 	const ref = useRef<HTMLDivElement>(null)

@@ -1,5 +1,5 @@
 import s from './CardList.module.css'
-import { Card } from '../../../4-features/Card'
+import { Card } from '4-features/Card'
 
 interface CardListProps {
 	title: string

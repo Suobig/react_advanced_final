@@ -4,10 +4,10 @@ import { memo } from 'react'
 import classNames from 'classnames'
 import { Link } from 'react-router-dom'
 
-import { Price } from '../../../6-shared/ui/Price'
+import { Price } from '6-shared/ui/Price'
 import { LikeButton } from '../../LikeButton'
-import { useAppSelector } from '../../../6-shared/store/utils'
-import { cartSelectors } from '../../../6-shared/store/slices/cart'
+import { useAppSelector } from '6-shared/store/utils'
+import { cartSelectors } from '6-shared/store/slices/cart'
 import { CartCounter } from '../../Cart/CartCounter'
 import { CartButton } from '../../Cart/CartCounter/CartButton'
 

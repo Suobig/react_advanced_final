@@ -1,9 +1,9 @@
 import s from './ReviewForm.module.css'
 
-import { useState, ChangeEvent } from 'react'
+import { useState, type ChangeEvent } from 'react'
 import classNames from 'classnames'
 
-import { Rating } from '../../../6-shared/ui/Rating'
+import { Rating } from '6-shared/ui/Rating'
 
 export const ReviewForm = () => {
 	const [reviewText, setReviewText] = useState('')

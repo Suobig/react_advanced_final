@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom'
 import classNames from 'classnames'
 import { useDispatch } from 'react-redux'
 
-import { CartCounter } from '../../../4-features/Cart/CartCounter'
-import { cartActions } from '../../../6-shared/store/slices/cart'
-import { ReactComponent as TrashIcon } from '../../../6-shared/assets/icons/trash.svg'
+import { CartCounter } from '4-features/Cart/CartCounter'
+import { cartActions } from '6-shared/store/slices/cart'
+import TrashIcon from '6-shared/assets/icons/trash.svg?react'
 
 type CartItemProps = {
 	product: CartProduct
@@ -51,8 +51,10 @@ const CartItemComponent = ({ product }: CartItemProps) => {
 								</div>
 							</div>
 						</div>
-						<button className={classNames(s['cart-item__bnt-trash'])}>
-							<TrashIcon onClick={handleDelete} />
+						<button
+							className={classNames(s['cart-item__bnt-trash'])}
+							onClick={handleDelete}>
+							<TrashIcon />
 						</button>
 					</div>
 				</div>

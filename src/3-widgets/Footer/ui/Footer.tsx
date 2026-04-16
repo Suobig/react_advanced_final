@@ -1,11 +1,11 @@
 import s from './Footer.module.css'
 import classNames from 'classnames'
-import Instagram from '../../../6-shared/assets/images/instagram.svg'
-import Telegram from '../../../6-shared/assets/images/telegram.svg'
-import Viber from '../../../6-shared/assets/images/viber.svg'
-import Vk from '../../../6-shared/assets/images/vk.svg'
-import Whatsapp from '../../../6-shared/assets/images/whatsapp.svg'
-import { Logo } from '../../../6-shared/ui/Logo'
+import Instagram from '6-shared/assets/images/instagram.svg?react'
+import Telegram from '6-shared/assets/images/telegram.svg?react'
+import Viber from '6-shared/assets/images/viber.svg?react'
+import Vk from '6-shared/assets/images/vk.svg?react'
+import Whatsapp from '6-shared/assets/images/whatsapp.svg?react'
+import { Logo } from '6-shared/ui/Logo'
 
 export const Footer = () => {
 	return (
@@ -66,27 +66,27 @@ export const Footer = () => {
 							<ul className={classNames(s['socials'])}>
 								<li>
 									<a className={s['socials__link']} href='/#'>
-										<img src={Telegram} alt='telegram' />
+										<Telegram />
 									</a>
 								</li>
 								<li>
 									<a className={s['socials__link']} href='/#'>
-										<img src={Whatsapp} alt='whatsapp' />
+										<Whatsapp />
 									</a>
 								</li>
 								<li>
 									<a className={s['socials__link']} href='/#'>
-										<img src={Viber} alt='viber' />
+										<Viber />
 									</a>
 								</li>
 								<li>
 									<a className={s['socials__link']} href='/#'>
-										<img src={Instagram} alt='instagram' />
+										<Instagram />
 									</a>
 								</li>
 								<li>
 									<a className={s['socials__link']} href='/#'>
-										<img src={Vk} alt='vk' />
+										<Vk />
 									</a>
 								</li>
 							</ul>

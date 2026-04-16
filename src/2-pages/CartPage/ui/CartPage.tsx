@@ -1,11 +1,11 @@
 import s from './CartPage.module.css'
 import classNames from 'classnames'
 
-import { CartList } from '../../../3-widgets/CartList'
-import { CartAmount } from '../../../3-widgets/CartAmount'
-import { useAppSelector } from '../../../6-shared/store/utils'
-import { cartSelectors } from '../../../6-shared/store/slices/cart'
-import { ButtonBack } from '../../../4-features/ButtonBack'
+import { CartAmount } from '3-widgets/CartAmount'
+import { useAppSelector } from '6-shared/store/utils'
+import { cartSelectors } from '6-shared/store/slices/cart'
+import { ButtonBack } from '4-features/ButtonBack'
+import { CartList } from '3-widgets/CartList'
 
 export const CartPage = () => {
 	const products = useAppSelector(cartSelectors.getCartProducts)
