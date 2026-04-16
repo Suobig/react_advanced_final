@@ -119,4 +119,9 @@ declare global {
 	type Token = {
 		accessToken: string
 	}
+
+	type SignUpFormValues = {
+		email: string
+		password: string
+	}
 }

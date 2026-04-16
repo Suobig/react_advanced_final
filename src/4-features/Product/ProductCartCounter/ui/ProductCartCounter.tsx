@@ -1,18 +1,18 @@
 import s from './ProductCartCounter.module.css'
-import classNames from 'classnames'
-import { useCount } from '../hooks/useCount'
-import { useAddToCart } from '../../../6-shared/hooks/useAddToCart'
 
-type ProductCartCounterProps = {
-	product: Product
-}
-export const ProductCartCounter = ({ product }: ProductCartCounterProps) => {
+import classNames from 'classnames'
+
+import { useProductContext } from '../../../../6-shared/hooks/ProductContext'
+import { useCount } from '../hooks/useCount'
+import { CartButton } from '../../../Cart/CartCounter/CartButton'
+
+export const ProductCartCounter = () => {
+	const product = useProductContext()
 	const { stock } = product
 
 	const { count, handleCount, handleCountMinus, handleCountPlus } = useCount(
 		product.stock
 	)
-	const { addProductToCart } = useAddToCart()
 
 	if (stock === 0) {
 		return (
@@ -36,11 +36,7 @@ export const ProductCartCounter = ({ product }: ProductCartCounterProps) => {
 					+
 				</button>
 			</div>
-			<button
-				onClick={() => addProductToCart({ ...product, count })}
-				className={classNames(s['button'], s['button_type_primary'])}>
-				В корзину
-			</button>
+			<CartButton product={product} count={count} />
 		</div>
 	)
 }

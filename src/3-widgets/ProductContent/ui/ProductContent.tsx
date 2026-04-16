@@ -5,13 +5,17 @@ import classNames from 'classnames'
 import { ReviewList } from '../../../3-widgets/ReviewList/ui/ReviewList'
 import { ButtonBack } from '../../../4-features/ButtonBack'
 import { LikeButton } from '../../../4-features/LikeButton'
-import { CartCounter } from '../../../4-features/CartCounter'
-import { ProductCartCounter } from '../../../4-features/ProductCartCounter'
+import { ProductCartCounter } from '../../../4-features/Product/ProductCartCounter'
+import { CartCounter } from '../../../4-features/Cart/CartCounter'
 import { useAppSelector } from '../../../6-shared/store/utils'
 import { cartSelectors } from '../../../6-shared/store/slices/cart'
-import truckSVG from '../../../6-shared/assets/icons/truck.svg'
-import qualitySVG from '../../../6-shared/assets/icons/quality.svg'
+import { ReactComponent as TruckSVG } from '../../../6-shared/assets/icons/truck.svg'
+import { ReactComponent as QualitySVG } from '../../../6-shared/assets/icons/quality.svg'
 import { Rating } from '../../../6-shared/ui/Rating'
+import { ProductContext } from '../../../6-shared/hooks/ProductContext'
+import { ProductDescription } from '../../../4-features/Product/ProductDescription'
+import { InfoBlock } from '../../../6-shared/ui/InfoBlock'
+import { getProductRating } from '../model/getProductRating'
 
 interface ProductContentProps {
 	product?: Product
@@ -20,23 +24,22 @@ interface ProductContentProps {
 export const ProductContent = ({ product }: ProductContentProps) => {
 	const cartProducts = useAppSelector(cartSelectors.getCartProducts)
 
-	console.log(product)
-
 	if (!product) {
 		return <></>
 	}
 
 	const { id, name, images, description, price, discount } = product
+	const rating = getProductRating(product)
 
 	const isProductInCart = !!cartProducts.find((p) => p.id === id)
 	return (
-		<>
+		<ProductContext product={product}>
 			<ButtonBack />
 			<h1 className={s.title}>{name}</h1>
-			<p className='acticul'>
+			<p className='article'>
 				Артикул: <b>2388907</b>
 			</p>
-			<Rating rating={3} />
+			<Rating rating={rating} />
 			<div className={s.product}>
 				<div className={classNames(s['product__img-wrapper'])}>
 					<img src={images} alt={description} />
@@ -51,79 +54,29 @@ export const ProductContent = ({ product }: ProductContentProps) => {
 						</span>
 					</div>
 
-					{isProductInCart ? (
-						<CartCounter id={id} />
-					) : (
-						<ProductCartCounter product={product} />
-					)}
+					{isProductInCart ? <CartCounter id={id} /> : <ProductCartCounter />}
 
 					<LikeButton product={product} />
-					<div className={classNames(s['product__delivery'])}>
-						<img src={truckSVG} alt='truck' />
-						<div className={classNames(s['product__right'])}>
-							<h3 className={classNames(s['product__name'])}>
-								Доставка по всему Миру!
-							</h3>
-							<p className={classNames(s['product__text'])}>
-								Доставка курьером — <span className='bold'> от 399 ₽</span>
-							</p>
-							<p className={classNames(s['product__text'])}>
-								Доставка в пункт выдачи —
-								<span className={classNames(s['product__bold'])}>
-									{' '}
-									от 199 ₽
-								</span>
-							</p>
-						</div>
-					</div>
-					<div className={classNames(s['product__delivery'])}>
-						<img src={qualitySVG} alt='quality' />
-						<div className={classNames(s['product__right'])}>
-							<h3 className={classNames(s['product__name'])}>
-								Гарантия качества
-							</h3>
-							<p className={classNames(s['product__text'])}>
-								Если Вам не понравилось качество нашей продукции, мы вернем
-								деньги, либо сделаем все возможное, чтобы удовлетворить ваши
-								нужды.
-							</p>
-						</div>
-					</div>
+					<InfoBlock icon={<TruckSVG />} title={'Доставка по всему Миру!'}>
+						<p className={classNames(s['product__text'])}>
+							Доставка курьером — <span className='bold'> от 399 ₽</span>
+						</p>
+						<p className={classNames(s['product__text'])}>
+							Доставка в пункт выдачи —
+							<span className={classNames(s['product__bold'])}> от 199 ₽</span>
+						</p>
+					</InfoBlock>
+					<InfoBlock icon={<QualitySVG />} title={'Гарантия качества'}>
+						<p className={classNames(s['product__text'])}>
+							Если Вам не понравилось качество нашей продукции, мы вернем
+							деньги, либо сделаем все возможное, чтобы удовлетворить ваши
+							нужды.
+						</p>
+					</InfoBlock>
 				</div>
 			</div>
-			<div className={s.description}>
-				<h2 className={classNames(s['product__title'])}>Описание</h2>
-				<p className={classNames(s['product__subtitle'])}>Описание demo</p>
-				<h2 className={classNames(s['product__title'])}>Характеристики</h2>
-				<div className={classNames(s['product__grid'])}>
-					<div className={classNames(s['product__naming'])}>Вес</div>
-					<div className={classNames(s['product__description'])}>
-						1 шт 120-200 грамм
-					</div>
-					<div className={classNames(s['product__naming'])}>Цена</div>
-					<div className={classNames(s['product__description'])}>
-						490 ₽ за 100 грамм
-					</div>
-					<div className={classNames(s['product__naming'])}>Польза</div>
-					<div className={classNames(s['product__description'])}>
-						<p>
-							Большое содержание аминокислот и микроэлементов оказывает
-							положительное воздействие на общий обмен веществ собаки.
-						</p>
-						<p>Способствуют укреплению десен и жевательных мышц.</p>
-						<p>
-							Развивают зубочелюстной аппарат, отвлекают собаку во время смены
-							зубов.
-						</p>
-						<p>
-							Имеет цельную волокнистую структуру, при разжевывание получается
-							эффект зубной щетки, лучше всего очищает клыки собак.
-						</p>
-						<p>Следует учесть высокую калорийность продукта.</p>
-					</div>
-				</div>
-			</div>
-			<ReviewList product={product} />
-		</>
+			<ProductDescription />
+			<ReviewList />
+		</ProductContext>
 	)
 }

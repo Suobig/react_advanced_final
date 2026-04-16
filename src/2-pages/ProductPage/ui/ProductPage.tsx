@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom'
 
-import { ProductContent } from '../../../3-widgets/ProductContent/ui/ProductContent'
+import { ProductContent } from '../../../3-widgets/ProductContent'
 import { WithProtection } from '../../../6-shared/store/HOCs/WithProtection'
 import { WithQuery } from '../../../6-shared/store/HOCs/WithQuery'
 import { useGetProductQuery } from '../../../6-shared/store/api/productsApi'

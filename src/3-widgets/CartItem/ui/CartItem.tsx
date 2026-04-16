@@ -1,17 +1,18 @@
 import s from './CartItem.module.css'
 
+import { memo } from 'react'
 import { Link } from 'react-router-dom'
 import classNames from 'classnames'
 import { useDispatch } from 'react-redux'
 
-import { CartCounter } from '../../../4-features/CartCounter'
+import { CartCounter } from '../../../4-features/Cart/CartCounter'
 import { cartActions } from '../../../6-shared/store/slices/cart'
 import { ReactComponent as TrashIcon } from '../../../6-shared/assets/icons/trash.svg'
 
 type CartItemProps = {
 	product: CartProduct
 }
-export const CartItem = ({ product }: CartItemProps) => {
+const CartItemComponent = ({ product }: CartItemProps) => {
 	const dispatch = useDispatch()
 	const { id, name, images, price, discount } = product
 
@@ -59,3 +60,5 @@ export const CartItem = ({ product }: CartItemProps) => {
 		</div>
 	)
 }
+
+export const CartItem = memo(CartItemComponent)

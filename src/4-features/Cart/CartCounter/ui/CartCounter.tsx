@@ -3,11 +3,12 @@ import s from './CartCounter.module.css'
 import classNames from 'classnames'
 
 import { useCount } from '../model/useCount'
+import { memo } from 'react'
 
 interface CartCounterProps {
 	id: string
 }
-export const CartCounter = ({ id }: CartCounterProps) => {
+const CartCounterComponent = ({ id }: CartCounterProps) => {
 	const { count, stock, handleSetCount, handleIncrement, handleDecrement } =
 		useCount(id)
 
@@ -35,3 +36,5 @@ export const CartCounter = ({ id }: CartCounterProps) => {
 		</>
 	)
 }
+
+export const CartCounter = memo(CartCounterComponent)

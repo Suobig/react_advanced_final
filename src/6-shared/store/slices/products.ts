@@ -11,7 +11,7 @@ const initialState: ProductsState = {
 	searchText: '',
 	sort: 'newest',
 	page: 1,
-	perPage: 6,
+	perPage: 20,
 }
 
 export const productsSlice = createSlice({

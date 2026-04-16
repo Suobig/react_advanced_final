@@ -1,13 +1,14 @@
 import s from './ReviewList.module.css'
+
 import classNames from 'classnames'
 
 import { ReviewForm } from '../../../3-widgets/ReviewForm'
 import { Rating } from '../../../6-shared/ui/Rating'
+import { useProductContext } from '../../../6-shared/hooks/ProductContext'
 
-type ReviewListProps = {
-	product: Product
-}
-export const ReviewList = ({ product }: ReviewListProps) => {
+export const ReviewList = () => {
+	const product = useProductContext()
+
 	return (
 		<div className={classNames(s['product__reviews'])}>
 			{product.reviews.map((review) => (

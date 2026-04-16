@@ -105,33 +105,6 @@
 	text-decoration: none;
 }
 
-.card__btn {
-	display: inline-block;
-	padding: 10px 18px;
-	color: currentcolor;
-	font-weight: 700;
-	font-size: 16px;
-	line-height: 20px;
-	text-decoration: none;
-	border-radius: 55px;
-	transition: background-color 0.3s;
-	border: none;
-}
-
-.card__btn_type_primary {
-	background-color: #ffe44d;
-	cursor: pointer;
-}
-
-.card__btn_type_primary:hover {
-	color: #f7f7f7;
-	background-color: #ffaa0d;
-}
-
-.card__btn_disabled {
-	background-color: transparent;
-}
-
 .tag {
 	padding: 2px 8px;
 	font-weight: 800;

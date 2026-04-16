@@ -1,0 +1,27 @@
+.root {
+	display: flex;
+	align-items: flex-start;
+	padding: 12px;
+	background-color: rgb(236 239 241 / 60%);
+	border-radius: 12px;
+}
+
+.root:not(.root:last-child) {
+	margin-bottom: 8px;
+}
+
+.icon {
+	flex-grow: 0;
+}
+
+.right {
+	margin-left: 12px;
+}
+
+.name {
+	margin-top: 0;
+	margin-bottom: 8px;
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 20px;
+}

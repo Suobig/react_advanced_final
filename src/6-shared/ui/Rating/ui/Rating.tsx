@@ -1,3 +1,5 @@
+import { memo } from 'react'
+
 import { ReactComponent as Star } from '../../../assets/icons/star.svg'
 
 interface RatingProps {
@@ -6,7 +8,7 @@ interface RatingProps {
 	onChange?: (rating: number) => void
 }
 
-export const Rating = ({
+const RatingComponent = ({
 	rating = 0,
 	isEdit = false,
 	onChange,
@@ -24,3 +26,5 @@ export const Rating = ({
 		</div>
 	)
 }
+
+export const Rating = memo(RatingComponent)

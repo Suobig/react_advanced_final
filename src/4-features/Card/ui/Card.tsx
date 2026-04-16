@@ -1,5 +1,6 @@
 import s from './Card.module.css'
 
+import { memo } from 'react'
 import classNames from 'classnames'
 import { Link } from 'react-router-dom'
 
@@ -7,19 +8,17 @@ import { Price } from '../../../6-shared/ui/Price'
 import { LikeButton } from '../../LikeButton'
 import { useAppSelector } from '../../../6-shared/store/utils'
 import { cartSelectors } from '../../../6-shared/store/slices/cart'
-import { useAddToCart } from '../../../6-shared/hooks/useAddToCart'
-import { CartCounter } from '../../CartCounter'
+import { CartCounter } from '../../Cart/CartCounter'
+import { CartButton } from '../../Cart/CartCounter/CartButton'
 
 type CardProps = {
 	product: Product
 }
-export const Card = ({ product }: CardProps) => {
+const CardComponent = ({ product }: CardProps) => {
 	const { discount, price, name, tags, id, images, stock } = product
 	const cartProducts = useAppSelector(cartSelectors.getCartProducts)
 	const isProductInCart = cartProducts.some((p) => p.id === id)
 	const isOutOfStock = stock === 0
-
-	const { addProductToCart } = useAddToCart()
 
 	return (
 		<article className={s['card']}>
@@ -58,18 +57,10 @@ export const Card = ({ product }: CardProps) => {
 			{isProductInCart ? (
 				<CartCounter id={id} />
 			) : (
-				<button
-					onClick={() => addProductToCart({ ...product, count: 1 })}
-					disabled={isOutOfStock}
-					className={classNames(
-						s['card__cart'],
-						s['card__btn'],
-						{ [s['card__btn_type_primary']]: !isOutOfStock },
-						{ [s['card__btn_disabled']]: isOutOfStock }
-					)}>
-					{isOutOfStock ? 'Товар закончился' : 'В корзину'}
-				</button>
+				<CartButton product={product} outOfStock={isOutOfStock} count={1} />
 			)}
 		</article>
 	)
 }
+
+export const Card = memo(CardComponent)
