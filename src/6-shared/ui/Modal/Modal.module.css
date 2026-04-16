@@ -1,0 +1,21 @@
+.overlay {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: #35353534;
+	z-index: 9000;
+}
+
+.content {
+	position: relative;
+	background-color: #fff;
+	border-radius: 12px;
+	top: 5%;
+	left: 5%;
+	width: 90%;
+	height: 90%;
+	padding: 24px;
+	z-index: 90001
+}

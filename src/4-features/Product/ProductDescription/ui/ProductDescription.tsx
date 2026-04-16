@@ -2,7 +2,7 @@ import s from './ProductDescription.module.css'
 
 import { memo } from 'react'
 
-import { useProductContext } from '../../../../6-shared/hooks/ProductContext'
+import { useProductContext } from '../../../../6-shared/hooks/useProductContext'
 
 const ProductDescriptionContent = () => {
 	const product = useProductContext()

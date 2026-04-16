@@ -2,7 +2,7 @@ import s from './ProductCartCounter.module.css'
 
 import classNames from 'classnames'
 
-import { useProductContext } from '../../../../6-shared/hooks/ProductContext'
+import { useProductContext } from '../../../../6-shared/hooks/useProductContext'
 import { useCount } from '../hooks/useCount'
 import { CartButton } from '../../../Cart/CartCounter/CartButton'
 
