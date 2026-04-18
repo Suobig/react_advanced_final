@@ -1,9 +1,6 @@
 import classNames from 'classnames'
-import Instagram from '6-shared/assets/images/instagram.svg?react'
-import Telegram from '6-shared/assets/images/telegram.svg?react'
-import Viber from '6-shared/assets/images/viber.svg?react'
-import Vk from '6-shared/assets/images/vk.svg?react'
-import Whatsapp from '6-shared/assets/images/whatsapp.svg?react'
+
+import SocialLink from '4-features/SocialLink/ui/SocialLink'
 import { Logo } from '6-shared/ui/Logo'
 import s from './Footer.module.css'
 
@@ -65,29 +62,19 @@ export const Footer = () => {
 							</a>
 							<ul className={classNames(s['socials'])}>
 								<li>
-									<a className={s['socials__link']} href='/#'>
-										<Telegram />
-									</a>
+									<SocialLink type='Telegram' href='/#' />
 								</li>
 								<li>
-									<a className={s['socials__link']} href='/#'>
-										<Whatsapp />
-									</a>
+									<SocialLink type='Whatsapp' href='/#' />
 								</li>
 								<li>
-									<a className={s['socials__link']} href='/#'>
-										<Viber />
-									</a>
+									<SocialLink type='Viber' href='/#' />
 								</li>
 								<li>
-									<a className={s['socials__link']} href='/#'>
-										<Instagram />
-									</a>
+									<SocialLink type='Instagram' href='/#' />
 								</li>
 								<li>
-									<a className={s['socials__link']} href='/#'>
-										<Vk />
-									</a>
+									<SocialLink type='Vk' href='/#' />
 								</li>
 							</ul>
 						</div>
