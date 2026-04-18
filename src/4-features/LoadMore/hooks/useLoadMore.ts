@@ -1,10 +1,12 @@
+/* global IntersectionObserverInit IntersectionObserverCallback */
+
 import { type RefObject, useCallback, useLayoutEffect } from 'react'
-import { useAppDispatch, useAppSelector } from '6-shared/store/utils'
 import { useProducts } from '6-shared/store/hooks/useProducts'
 import {
 	productsActions,
 	productsSelectors,
 } from '6-shared/store/slices/products'
+import { useAppDispatch, useAppSelector } from '6-shared/store/utils'
 
 interface UseLoadMoreParams {
 	ref: RefObject<HTMLDivElement>
@@ -35,7 +37,7 @@ export const useLoadMore = ({ ref }: UseLoadMoreParams) => {
 				}
 			}
 			observer = new IntersectionObserver(callback, options)
-			ref.current && observer.observe(ref.current)
+			if (ref.current) observer.observe(ref.current)
 		}
 
 		return () => {

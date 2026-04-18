@@ -1,3 +1,6 @@
+/* global RequestInit HeadersInit */
+import type { Like, Product, Review, User } from '6-shared/types/types'
+
 type ConfigApi = {
 	baseUrl: string
 	headers: HeadersInit

@@ -1,6 +1,6 @@
-import s from './CartAmount.module.css'
-
 import classNames from 'classnames'
+import type { CartProduct } from '6-shared/types/types'
+import s from './CartAmount.module.css'
 
 type CartAmountProps = {
 	products: CartProduct[]
@@ -11,7 +11,7 @@ export const CartAmount = ({ products }: CartAmountProps) => {
 
 	const handleSubmitCart = () => {
 		const order = products.map((p) => ({ id: p.id, count: p.count }))
-		console.log('Отправка заказа на сервер: ', JSON.stringify(order, null, 2))
+		console.info('Отправка заказа на сервер: ', JSON.stringify(order, null, 2))
 	}
 
 	return (

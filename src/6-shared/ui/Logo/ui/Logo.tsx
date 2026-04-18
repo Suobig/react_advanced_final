@@ -1,8 +1,7 @@
-import s from './Logo.module.css'
-
 import { Link } from 'react-router-dom'
 
 import LogoIcon from '6-shared/assets/icons/logo.svg?react'
+import s from './Logo.module.css'
 
 export const Logo = () => {
 	return (

@@ -1,14 +1,14 @@
 import { createBrowserRouter } from 'react-router-dom'
 
-import { App } from './App'
-import { HomePage } from '2-pages/HomePage'
-import { ProductPage } from '2-pages/ProductPage'
-import { NotFoundPage } from '2-pages/NotFoundPage'
-import { ProfilePage } from '2-pages/ProfilePage'
-import { FavoritesPage } from '2-pages/FavoritesPage'
-import { SignUpPage } from '2-pages/SignUpPage'
-import { SignInPage } from '2-pages/SignInPage'
 import { CartPage } from '2-pages/CartPage'
+import { FavoritesPage } from '2-pages/FavoritesPage'
+import { HomePage } from '2-pages/HomePage'
+import { NotFoundPage } from '2-pages/NotFoundPage'
+import { ProductPage } from '2-pages/ProductPage'
+import { ProfilePage } from '2-pages/ProfilePage'
+import { SignInPage } from '2-pages/SignInPage'
+import { SignUpPage } from '2-pages/SignUpPage'
+import { App } from './App'
 
 export const RoutePath: Record<string, `/${string}` | '*'> = {
 	home: '/',

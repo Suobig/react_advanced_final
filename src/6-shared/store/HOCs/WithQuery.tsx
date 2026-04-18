@@ -1,10 +1,10 @@
-import { type FC, type ComponentType } from 'react'
+import { Box, CircularProgress, Container } from '@mui/material'
 import { type SerializedError } from '@reduxjs/toolkit'
 import { type FetchBaseQueryError } from '@reduxjs/toolkit/query'
-import { Box, CircularProgress, Container } from '@mui/material'
+import { type FC, type ComponentType } from 'react'
 
-import { getMessageFromError } from '../../utils'
 import { ErrorMessage } from '6-shared/ui/ErrorMessage'
+import { getMessageFromError } from '../../utils'
 
 interface WithQueryProps {
 	isLoading: boolean

@@ -1,8 +1,7 @@
-import s from './ProductDescription.module.css'
-
 import { memo } from 'react'
 
 import { useProductContext } from '6-shared/hooks/useProductContext'
+import s from './ProductDescription.module.css'
 
 const ProductDescriptionContent = () => {
 	const product = useProductContext()

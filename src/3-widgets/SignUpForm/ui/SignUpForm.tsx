@@ -1,6 +1,6 @@
-import { type FC, useEffect } from 'react'
-import { Link as RouterLink, useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { yupResolver } from '@hookform/resolvers/yup'
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
+import LoadingButton from '@mui/lab/LoadingButton'
 import {
 	Avatar,
 	Box,
@@ -9,15 +9,16 @@ import {
 	TextField,
 	Typography,
 } from '@mui/material'
-import LoadingButton from '@mui/lab/LoadingButton'
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
+import { type FC, useEffect } from 'react'
 import { Controller, type SubmitHandler, useForm } from 'react-hook-form'
+import { useDispatch } from 'react-redux'
+import { Link as RouterLink, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import { yupResolver } from '@hookform/resolvers/yup'
-import { signUpFormSchema } from '../utils/validator'
+import { useSignUpMutation } from '6-shared/store/api/authApi'
 import { userActions } from '6-shared/store/slices/user'
 import { getMessageFromError } from '6-shared/utils'
-import { useSignUpMutation } from '6-shared/store/api/authApi'
+import { signUpFormSchema } from '../utils/validator'
+import type { SignUpFormValues } from '6-shared/types/types'
 
 export const SignUpForm: FC = () => {
 	const dispatch = useDispatch()
@@ -67,7 +68,7 @@ export const SignUpForm: FC = () => {
 			navigate('/')
 		} catch (error) {
 			// Если произошла ошибка, то выводим уведомление
-			console.log({ error })
+			console.error({ error })
 			toast.error(
 				getMessageFromError(
 					error,

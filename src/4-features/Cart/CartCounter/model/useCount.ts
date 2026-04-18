@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import { cartActions, cartSelectors } from '6-shared/store/slices/cart'
 import { useAppSelector } from '6-shared/store/utils'
 import { getValidCount } from '6-shared/utils/getValidCount'
+import type { CartProduct } from '6-shared/types/types'
 
 export const useCount = (productId: string) => {
 	const dispatch = useDispatch()

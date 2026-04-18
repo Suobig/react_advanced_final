@@ -1,9 +1,8 @@
-import s from './CartCounter.module.css'
-
 import classNames from 'classnames'
 
-import { useCount } from '../model/useCount'
 import { memo } from 'react'
+import { useCount } from '../model/useCount'
+import s from './CartCounter.module.css'
 
 interface CartCounterProps {
 	id: string

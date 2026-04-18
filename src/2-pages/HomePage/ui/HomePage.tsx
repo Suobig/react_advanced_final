@@ -1,9 +1,9 @@
 import { CardList } from '3-widgets/CardList'
-import { Sort } from '4-features/Sort'
 import { LoadMore } from '4-features/LoadMore'
-import { useProducts } from '6-shared/store/hooks/useProducts'
-import { WithQuery } from '6-shared/store/HOCs/WithQuery'
+import { SortControl } from '4-features/SortControl'
 import { WithProtection } from '6-shared/store/HOCs/WithProtection'
+import { WithQuery } from '6-shared/store/HOCs/WithQuery'
+import { useProducts } from '6-shared/store/hooks/useProducts'
 
 const CardListWithQuery = WithQuery(CardList)
 
@@ -12,7 +12,7 @@ export const HomePage = WithProtection(() => {
 
 	return (
 		<>
-			<Sort />
+			<SortControl />
 			<CardListWithQuery
 				title='Все товары'
 				isLoading={isLoading}

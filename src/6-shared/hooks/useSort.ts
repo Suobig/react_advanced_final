@@ -1,5 +1,6 @@
-import { useAppDispatch, useAppSelector } from '../store/utils'
+import type { Sort } from '6-shared/types/types'
 import { productsActions, productsSelectors } from '../store/slices/products'
+import { useAppDispatch, useAppSelector } from '../store/utils'
 
 interface SortParams {
 	title: string

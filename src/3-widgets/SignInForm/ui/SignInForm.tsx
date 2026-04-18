@@ -1,4 +1,6 @@
-import { type FC, memo, useEffect } from 'react'
+import { yupResolver } from '@hookform/resolvers/yup'
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
+import LoadingButton from '@mui/lab/LoadingButton'
 import {
 	Avatar,
 	Box,
@@ -7,19 +9,17 @@ import {
 	TextField,
 	Typography,
 } from '@mui/material'
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
+import { type FC, memo, useEffect } from 'react'
 import { Controller, type SubmitHandler, useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
-import LoadingButton from '@mui/lab/LoadingButton'
-import { toast } from 'react-toastify'
-import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom'
 
 import { useDispatch } from 'react-redux'
-import { type SignInFormValues } from '../utils/types'
-import { signInFormSchema } from '../utils/validator'
+import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import { useSignInMutation } from '6-shared/store/api/authApi'
 import { userActions } from '6-shared/store/slices/user'
 import { getMessageFromError } from '6-shared/utils'
+import { type SignInFormValues } from '../utils/types'
+import { signInFormSchema } from '../utils/validator'
 
 const SignInFormComponent: FC = () => {
 	const dispatch = useDispatch()

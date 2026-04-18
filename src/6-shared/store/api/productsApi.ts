@@ -1,4 +1,5 @@
 import { createApi } from '@reduxjs/toolkit/query/react'
+import type { Product, Sort } from '6-shared/types/types'
 import { customBaseQuery } from './config'
 
 export interface IErrorResponse {

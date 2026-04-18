@@ -1,21 +1,20 @@
-import s from './Header.module.css'
-
-import { memo, useState } from 'react'
 import classNames from 'classnames'
+import { memo, useState } from 'react'
 
+import { HeaderLink } from '4-features/HeaderLink'
 import { Search } from '4-features/Search'
-import { Logo } from '6-shared/ui/Logo'
-import { useAppSelector } from '6-shared/store/utils'
-import { userSelectors } from '6-shared/store/slices/user'
-import { isLiked } from '6-shared/utils'
-import { useProducts } from '6-shared/store/hooks/useProducts'
-import { cartSelectors } from '6-shared/store/slices/cart'
 import IconCart from '6-shared/assets/icons/cart.svg?react'
+import IconExit from '6-shared/assets/icons/exit.svg?react'
 import IconFavorites from '6-shared/assets/icons/favorites.svg?react'
 import IconUser from '6-shared/assets/icons/user.svg?react'
-import IconExit from '6-shared/assets/icons/exit.svg?react'
+import { useProducts } from '6-shared/store/hooks/useProducts'
+import { cartSelectors } from '6-shared/store/slices/cart'
+import { userSelectors } from '6-shared/store/slices/user'
+import { useAppSelector } from '6-shared/store/utils'
+import { Logo } from '6-shared/ui/Logo'
+import { isLiked } from '6-shared/utils'
 import { ProfileModal } from '../../ProfileModal/ui/ProfileModal'
-import { HeaderLink } from '4-features/HeaderLink'
+import s from './Header.module.css'
 
 const HeaderComponent = () => {
 	const [isProfileOpen, setIsProfileOpen] = useState(false)

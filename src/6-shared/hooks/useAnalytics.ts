@@ -1,4 +1,4 @@
-import { MouseEventHandler, useCallback, useRef } from 'react'
+import { type MouseEventHandler, useCallback, useRef } from 'react'
 
 type Analytics = {
 	clicks: number
@@ -8,7 +8,7 @@ type Analytics = {
 export const useAnalytics = () => {
 	const analyticsRef = useRef<Analytics>({
 		clicks: 0,
-		timeStart: Date.now(),
+		timeStart: new Date().getTime(),
 	})
 
 	const onClick = useCallback<MouseEventHandler>(
@@ -17,7 +17,7 @@ export const useAnalytics = () => {
 			const timeDiff =
 				Math.round((timeClick - analyticsRef.current.timeStart) / 100) / 10
 			const clickNum = analyticsRef.current.clicks + 1
-			console.log(
+			console.info(
 				`Click #${clickNum}. Time since last click: ${timeDiff}s. X: ${e.screenX}, Y: ${e.screenY}`
 			)
 			analyticsRef.current.clicks += 1

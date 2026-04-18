@@ -1,7 +1,8 @@
 import { type ChangeEvent } from 'react'
 import { useSort } from '6-shared/hooks/useSort'
+import type { Sort } from '6-shared/types/types'
 
-export const Sort = () => {
+export const SortControl = () => {
 	const { sort, setSort, sortParams } = useSort()
 	const handleSortSelect = (e: ChangeEvent<HTMLSelectElement>) => {
 		const newSort = e.target.value as Sort

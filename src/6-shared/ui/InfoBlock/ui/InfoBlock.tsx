@@ -1,6 +1,5 @@
+import { memo, type ReactNode } from 'react'
 import s from './InfoBlock.module.css'
-
-import { memo, ReactNode } from 'react'
 
 interface InfoBlockProps {
 	icon: ReactNode

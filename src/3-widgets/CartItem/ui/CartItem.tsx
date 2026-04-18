@@ -1,13 +1,13 @@
-import s from './CartItem.module.css'
-
-import { memo } from 'react'
-import { Link } from 'react-router-dom'
 import classNames from 'classnames'
+import { memo } from 'react'
 import { useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 import { CartCounter } from '4-features/Cart/CartCounter'
-import { cartActions } from '6-shared/store/slices/cart'
 import TrashIcon from '6-shared/assets/icons/trash.svg?react'
+import { cartActions } from '6-shared/store/slices/cart'
+import type { CartProduct } from '6-shared/types/types'
+import s from './CartItem.module.css'
 
 type CartItemProps = {
 	product: CartProduct

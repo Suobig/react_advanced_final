@@ -1,10 +1,9 @@
-import s from './ProductCartCounter.module.css'
-
 import classNames from 'classnames'
 
 import { useProductContext } from '6-shared/hooks/useProductContext'
-import { useCount } from '../hooks/useCount'
 import { CartButton } from '../../../Cart/CartCounter/CartButton'
+import { useCount } from '../hooks/useCount'
+import s from './ProductCartCounter.module.css'
 
 export const ProductCartCounter = () => {
 	const product = useProductContext()

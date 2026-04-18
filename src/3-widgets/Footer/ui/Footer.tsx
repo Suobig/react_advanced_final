@@ -1,4 +1,3 @@
-import s from './Footer.module.css'
 import classNames from 'classnames'
 import Instagram from '6-shared/assets/images/instagram.svg?react'
 import Telegram from '6-shared/assets/images/telegram.svg?react'
@@ -6,6 +5,7 @@ import Viber from '6-shared/assets/images/viber.svg?react'
 import Vk from '6-shared/assets/images/vk.svg?react'
 import Whatsapp from '6-shared/assets/images/whatsapp.svg?react'
 import { Logo } from '6-shared/ui/Logo'
+import s from './Footer.module.css'
 
 export const Footer = () => {
 	return (

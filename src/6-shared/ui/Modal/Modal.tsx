@@ -1,15 +1,14 @@
-import s from './Modal.module.css'
-
 import {
-	KeyboardEventHandler,
-	MouseEventHandler,
-	ReactNode,
+	type KeyboardEventHandler,
+	type MouseEventHandler,
+	type ReactNode,
 	useCallback,
 	useEffect,
 	useLayoutEffect,
 	useRef,
 } from 'react'
 import ReactDOM from 'react-dom'
+import s from './Modal.module.css'
 
 interface ModalProps {
 	children: ReactNode

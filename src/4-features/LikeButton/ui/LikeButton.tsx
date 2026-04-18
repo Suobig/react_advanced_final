@@ -1,16 +1,16 @@
-import s from './LikeButton.module.css'
 import classNames from 'classnames'
-import { toast } from 'react-toastify'
 import { useOptimistic } from 'react'
+import { toast } from 'react-toastify'
 
-import { useAppSelector } from '6-shared/store/utils'
-import { userSelectors } from '6-shared/store/slices/user'
+import LikeSvg from '6-shared/assets/icons/like.svg?react'
 import {
 	useSetLikeProductMutation,
 	useDeleteLikeProductMutation,
 	type IErrorResponse,
 } from '6-shared/store/api/productsApi'
-import LikeSvg from '6-shared/assets/icons/like.svg?react'
+import { userSelectors } from '6-shared/store/slices/user'
+import { useAppSelector } from '6-shared/store/utils'
+import s from './LikeButton.module.css'
 
 type TLikeButtonProps = {
 	isLike: boolean
@@ -23,8 +23,6 @@ export const LikeButton = ({ isLike, productId }: TLikeButtonProps) => {
 
 	const [setLike] = useSetLikeProductMutation()
 	const [deleteLike] = useDeleteLikeProductMutation()
-
-	console.log({ isLike, isOptimisticLike })
 
 	const toggleLike = async () => {
 		if (!accessToken) {

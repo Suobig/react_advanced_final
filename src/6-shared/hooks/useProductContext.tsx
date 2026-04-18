@@ -1,4 +1,5 @@
-import { createContext, ReactNode, useContext } from 'react'
+import type { Product } from '6-shared/types/types'
+import { createContext, type ReactNode, useContext } from 'react'
 
 const Context = createContext<Product | null>(null)
 

@@ -1,5 +1,5 @@
-import s from './Price.module.css'
 import classNames from 'classnames'
+import s from './Price.module.css'
 
 type TPriceProps = {
 	price: number

@@ -1,8 +1,8 @@
-import s from './CartButton.module.css'
-
 import cn from 'classnames'
 
 import { useAddToCart } from '../model/useAddToCart'
+import s from './CartButton.module.css'
+import type { Product } from '6-shared/types/types'
 
 interface CartButtonProps {
 	product: Product

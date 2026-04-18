@@ -1,10 +1,9 @@
-import s from './ReviewList.module.css'
-
 import classNames from 'classnames'
 
 import { ReviewForm } from '3-widgets/ReviewForm'
-import { Rating } from '6-shared/ui/Rating'
 import { useProductContext } from '6-shared/hooks/useProductContext'
+import { Rating } from '6-shared/ui/Rating'
+import s from './ReviewList.module.css'
 
 export const ReviewList = () => {
 	const product = useProductContext()

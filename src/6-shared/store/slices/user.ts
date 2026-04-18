@@ -1,3 +1,4 @@
+import type { Token, User } from '6-shared/types/types'
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
 
 interface UserState {

@@ -1,5 +1,6 @@
-import s from './CardList.module.css'
 import { Card } from '4-features/Card'
+import type { Product } from '6-shared/types/types'
+import s from './CardList.module.css'
 
 interface CardListProps {
 	title: string

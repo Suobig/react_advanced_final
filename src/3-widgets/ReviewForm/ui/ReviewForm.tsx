@@ -1,9 +1,8 @@
-import s from './ReviewForm.module.css'
-
-import { useState, type ChangeEvent } from 'react'
 import classNames from 'classnames'
+import { useState, type ChangeEvent } from 'react'
 
 import { Rating } from '6-shared/ui/Rating'
+import s from './ReviewForm.module.css'
 
 export const ReviewForm = () => {
 	const [reviewText, setReviewText] = useState('')
@@ -14,7 +13,7 @@ export const ReviewForm = () => {
 	}
 
 	const handleClick = () => {
-		console.log('Отправка: ', { reviewText, rating })
+		console.info('Отправка: ', { reviewText, rating })
 	}
 
 	return (

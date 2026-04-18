@@ -1,4 +1,5 @@
 import { type PayloadAction, createSlice } from '@reduxjs/toolkit'
+import type { Sort } from '6-shared/types/types'
 
 export type ProductsState = {
 	sort: Sort

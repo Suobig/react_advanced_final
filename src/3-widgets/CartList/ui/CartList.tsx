@@ -1,7 +1,7 @@
-import s from './CartList.module.css'
-
-import { CartItem } from '../../CartItem'
 import classNames from 'classnames'
+import { CartItem } from '../../CartItem'
+import type { CartProduct } from '6-shared/types/types'
+import s from './CartList.module.css'
 
 type CartListProps = {
 	products: CartProduct[]

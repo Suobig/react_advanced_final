@@ -1,17 +1,17 @@
-import s from './Card.module.css'
-
-import { memo } from 'react'
 import classNames from 'classnames'
+import { memo } from 'react'
 import { Link } from 'react-router-dom'
 
-import { Price } from '6-shared/ui/Price'
-import { useAppSelector } from '6-shared/store/utils'
 import { cartSelectors } from '6-shared/store/slices/cart'
-import { LikeButton } from '../../LikeButton'
+import { userSelectors } from '6-shared/store/slices/user'
+import { useAppSelector } from '6-shared/store/utils'
+import { Price } from '6-shared/ui/Price'
+import { isLiked } from '6-shared/utils'
 import { CartCounter } from '../../Cart/CartCounter'
 import { CartButton } from '../../Cart/CartCounter/CartButton'
-import { userSelectors } from '6-shared/store/slices/user'
-import { isLiked } from '6-shared/utils'
+import { LikeButton } from '../../LikeButton'
+import s from './Card.module.css'
+import type { Product } from '6-shared/types/types'
 
 type CardProps = {
 	product: Product

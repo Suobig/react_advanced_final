@@ -1,7 +1,6 @@
-import s from './HeaderLink.module.css'
-
 import { type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
+import s from './HeaderLink.module.css'
 
 interface HeaderLinkProps {
 	to: string
