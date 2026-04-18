@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { useOptimistic } from 'react'
+import { memo, useOptimistic, useTransition } from 'react'
 import { toast } from 'react-toastify'
 
 import LikeSvg from '6-shared/assets/icons/like.svg?react'
@@ -16,10 +16,11 @@ type TLikeButtonProps = {
 	isLike: boolean
 	productId: string
 }
-export const LikeButton = ({ isLike, productId }: TLikeButtonProps) => {
+const LikeButtonComponent = ({ isLike, productId }: TLikeButtonProps) => {
 	const accessToken = useAppSelector(userSelectors.getAccessToken)
 
 	const [isOptimisticLike, setOptimisticLike] = useOptimistic(isLike)
+	const [_, startTransition] = useTransition()
 
 	const [setLike] = useSetLikeProductMutation()
 	const [deleteLike] = useDeleteLikeProductMutation()
@@ -30,18 +31,17 @@ export const LikeButton = ({ isLike, productId }: TLikeButtonProps) => {
 			return
 		}
 		let response
-		if (isOptimisticLike) {
-			setOptimisticLike(false)
-			response = await deleteLike({ id: `${productId}` })
-		} else {
-			setOptimisticLike(true)
-			response = await setLike({ id: `${productId}` })
-		}
 
-		if (response.error) {
-			const error = response.error as IErrorResponse
-			toast.error(error.data.message)
-		}
+		const likeMutation = isOptimisticLike ? deleteLike : setLike
+		startTransition(async () => {
+			setOptimisticLike(!isOptimisticLike)
+			response = await likeMutation({ id: `${productId}` })
+
+			if (response.error) {
+				const error = response.error as IErrorResponse
+				toast.error(error.data.message)
+			}
+		})
 	}
 
 	return (
@@ -54,3 +54,5 @@ export const LikeButton = ({ isLike, productId }: TLikeButtonProps) => {
 		</button>
 	)
 }
+
+export const LikeButton = memo(LikeButtonComponent)
