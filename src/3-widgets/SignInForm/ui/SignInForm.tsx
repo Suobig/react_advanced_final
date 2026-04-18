@@ -1,9 +1,9 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
-import LoadingButton from '@mui/lab/LoadingButton'
 import {
 	Avatar,
 	Box,
+	Button,
 	Container,
 	Link,
 	TextField,
@@ -149,7 +149,7 @@ const SignInFormComponent: FC = () => {
 						}}
 					/>
 
-					<LoadingButton
+					<Button
 						type='submit'
 						// кнопка становится недоступной после первой валидации (если есть ошибки)
 						// или когда выполняется отправка (чтобы не дать пользователю отправить форму несколько раз)
@@ -159,7 +159,7 @@ const SignInFormComponent: FC = () => {
 						variant='contained'
 						sx={{ mt: 3, mb: 2 }}>
 						Sign IN
-					</LoadingButton>
+					</Button>
 					<Box sx={{ display: 'flex', justifyContent: 'center', flexGrow: 1 }}>
 						<Link component={RouterLink} to='/signup'>
 							SIGN UP
