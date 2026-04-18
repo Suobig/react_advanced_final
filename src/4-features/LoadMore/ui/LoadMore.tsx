@@ -3,9 +3,19 @@ import { useRef } from 'react'
 import { useLoadMore } from '../hooks/useLoadMore'
 import { SuccessMessage } from '6-shared/ui/SuccesMessage'
 
-export const LoadMore = () => {
+interface LoadMoreProps {
+	isReady: boolean
+}
+
+export const LoadMore = (props: LoadMoreProps) => {
+	const { isReady } = props
+
 	const ref = useRef<HTMLDivElement>(null)
 	const { isEndOfList, isFetching } = useLoadMore({ ref })
+
+	if (!isReady) {
+		return <></>
+	}
 
 	return (
 		<Stack

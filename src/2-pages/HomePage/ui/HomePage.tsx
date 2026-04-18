@@ -20,7 +20,7 @@ export const HomePage = WithProtection(() => {
 				products={products}
 				error={error}
 			/>
-			<LoadMore />
+			<LoadMore isReady={!isLoading && !isError} />
 		</>
 	)
 })
