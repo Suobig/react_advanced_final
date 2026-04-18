@@ -16,6 +16,8 @@ import { ProductContext } from '6-shared/hooks/useProductContext'
 import { ProductDescription } from '4-features/Product/ProductDescription'
 import { InfoBlock } from '6-shared/ui/InfoBlock'
 import { getProductRating } from '../model/getProductRating'
+import { userSelectors } from '6-shared/store/slices/user'
+import { isLiked } from '6-shared/utils'
 
 interface ProductContentProps {
 	product?: Product
@@ -23,13 +25,16 @@ interface ProductContentProps {
 
 export const ProductContent = ({ product }: ProductContentProps) => {
 	const cartProducts = useAppSelector(cartSelectors.getCartProducts)
+	const user = useAppSelector(userSelectors.getUser)
 
 	if (!product) {
 		return <></>
 	}
 
-	const { id, name, images, description, price, discount } = product
+	const { id, name, images, likes, description, price, discount } = product
 	const rating = getProductRating(product)
+
+	const isLike = isLiked(likes, user?.id)
 
 	const isProductInCart = !!cartProducts.find((p) => p.id === id)
 	return (
@@ -56,7 +61,7 @@ export const ProductContent = ({ product }: ProductContentProps) => {
 
 					{isProductInCart ? <CartCounter id={id} /> : <ProductCartCounter />}
 
-					<LikeButton product={product} />
+					<LikeButton isLike={isLike} productId={id} />
 					<InfoBlock icon={<TruckSVG />} title={'Доставка по всему Миру!'}>
 						<p className={classNames(s['product__text'])}>
 							Доставка курьером — <span className='bold'> от 399 ₽</span>

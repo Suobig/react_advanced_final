@@ -153,7 +153,7 @@ export const SignUpForm: FC = () => {
 						sx={{ mt: 3, mb: 2 }}>
 						Sign Up
 					</LoadingButton>
-					<Box display='flex' justifyContent='center' flexGrow={1}>
+					<Box sx={{ display: 'flex', justifyContent: 'center', flexGrow: 1 }}>
 						<Link component={RouterLink} to='/signin'>
 							SIGN IN
 						</Link>

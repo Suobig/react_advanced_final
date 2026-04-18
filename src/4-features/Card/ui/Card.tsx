@@ -5,11 +5,13 @@ import classNames from 'classnames'
 import { Link } from 'react-router-dom'
 
 import { Price } from '6-shared/ui/Price'
-import { LikeButton } from '../../LikeButton'
 import { useAppSelector } from '6-shared/store/utils'
 import { cartSelectors } from '6-shared/store/slices/cart'
+import { LikeButton } from '../../LikeButton'
 import { CartCounter } from '../../Cart/CartCounter'
 import { CartButton } from '../../Cart/CartCounter/CartButton'
+import { userSelectors } from '6-shared/store/slices/user'
+import { isLiked } from '6-shared/utils'
 
 type CardProps = {
 	product: Product
@@ -17,7 +19,11 @@ type CardProps = {
 const CardComponent = ({ product }: CardProps) => {
 	const { discount, price, name, tags, id, images, stock } = product
 	const cartProducts = useAppSelector(cartSelectors.getCartProducts)
+	const user = useAppSelector(userSelectors.getUser)
+	const isLike = isLiked(product.likes, user?.id)
+
 	const isProductInCart = cartProducts.some((p) => p.id === id)
+
 	const isOutOfStock = stock === 0
 
 	return (
@@ -40,7 +46,7 @@ const CardComponent = ({ product }: CardProps) => {
 					s['card__sticky'],
 					s['card__sticky_type_top-right']
 				)}>
-				<LikeButton product={product} />
+				<LikeButton isLike={isLike} productId={product.id} />
 			</div>
 			<Link className={s['card__link']} to={`/products/${id}`}>
 				<img

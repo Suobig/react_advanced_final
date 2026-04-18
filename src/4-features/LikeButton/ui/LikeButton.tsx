@@ -1,6 +1,7 @@
 import s from './LikeButton.module.css'
 import classNames from 'classnames'
 import { toast } from 'react-toastify'
+import { useOptimistic } from 'react'
 
 import { useAppSelector } from '6-shared/store/utils'
 import { userSelectors } from '6-shared/store/slices/user'
@@ -12,16 +13,18 @@ import {
 import LikeSvg from '6-shared/assets/icons/like.svg?react'
 
 type TLikeButtonProps = {
-	product: Product
+	isLike: boolean
+	productId: string
 }
-export const LikeButton = ({ product }: TLikeButtonProps) => {
+export const LikeButton = ({ isLike, productId }: TLikeButtonProps) => {
 	const accessToken = useAppSelector(userSelectors.getAccessToken)
-	const user = useAppSelector(userSelectors.getUser)
+
+	const [isOptimisticLike, setOptimisticLike] = useOptimistic(isLike)
 
 	const [setLike] = useSetLikeProductMutation()
 	const [deleteLike] = useDeleteLikeProductMutation()
 
-	const isLike = product.likes.some((l) => l.userId === user?.id)
+	console.log({ isLike, isOptimisticLike })
 
 	const toggleLike = async () => {
 		if (!accessToken) {
@@ -29,10 +32,12 @@ export const LikeButton = ({ product }: TLikeButtonProps) => {
 			return
 		}
 		let response
-		if (isLike) {
-			response = await deleteLike({ id: `${product.id}` })
+		if (isOptimisticLike) {
+			setOptimisticLike(false)
+			response = await deleteLike({ id: `${productId}` })
 		} else {
-			response = await setLike({ id: `${product.id}` })
+			setOptimisticLike(true)
+			response = await setLike({ id: `${productId}` })
 		}
 
 		if (response.error) {
@@ -44,7 +49,7 @@ export const LikeButton = ({ product }: TLikeButtonProps) => {
 	return (
 		<button
 			className={classNames(s['card__favorite'], {
-				[s['card__favorite_is-active']]: isLike,
+				[s['card__favorite_is-active']]: isOptimisticLike,
 			})}
 			onClick={toggleLike}>
 			<LikeSvg />

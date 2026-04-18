@@ -1,4 +1,4 @@
-import { type FC, useEffect } from 'react'
+import { type FC, memo, useEffect } from 'react'
 import {
 	Avatar,
 	Box,
@@ -21,7 +21,7 @@ import { useSignInMutation } from '6-shared/store/api/authApi'
 import { userActions } from '6-shared/store/slices/user'
 import { getMessageFromError } from '6-shared/utils'
 
-export const SignInForm: FC = () => {
+const SignInFormComponent: FC = () => {
 	const dispatch = useDispatch()
 	const location = useLocation()
 	// navigate поможет сделать редирект в нужный момент
@@ -160,7 +160,7 @@ export const SignInForm: FC = () => {
 						sx={{ mt: 3, mb: 2 }}>
 						Sign IN
 					</LoadingButton>
-					<Box display='flex' justifyContent='center' flexGrow={1}>
+					<Box sx={{ display: 'flex', justifyContent: 'center', flexGrow: 1 }}>
 						<Link component={RouterLink} to='/signup'>
 							SIGN UP
 						</Link>
@@ -170,3 +170,5 @@ export const SignInForm: FC = () => {
 		</Container>
 	)
 }
+
+export const SignInForm = memo(SignInFormComponent)
