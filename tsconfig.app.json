@@ -23,8 +23,15 @@
         "erasableSyntaxOnly": true,
         "noFallthroughCasesInSwitch": true,
         "noUncheckedSideEffectImports": true,
-        "baseUrl": "./src",
-        "rootDir": "./"
+        "paths": {
+            "1-app/*": ["./src/1-app/*"],
+            "2-pages/*": ["./src/2-pages/*"],
+            "3-widgets/*": ["./src/3-widgets/*"],
+            "4-features/*": ["./src/4-features/*"],
+            "5-entities/*": ["./src/5-entities/*"],
+            "6-shared/*": ["./src/6-shared/*"],
+            "src/*": ["./src/*"]
+        },
     },
     "include": ["src"]
 }
