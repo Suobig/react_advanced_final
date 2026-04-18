@@ -1,15 +1,16 @@
 import classNames from 'classnames'
-import { memo, useOptimistic, useState } from 'react'
+import { memo, useOptimistic, useTransition } from 'react'
 import { toast } from 'react-toastify'
 
 import LikeSvg from '6-shared/assets/icons/like.svg?react'
 import {
 	useSetLikeProductMutation,
 	useDeleteLikeProductMutation,
-	type IErrorResponse,
 } from '6-shared/store/api/productsApi'
 import { userSelectors } from '6-shared/store/slices/user'
 import { useAppSelector } from '6-shared/store/utils'
+import { getMessageFromError } from '6-shared/utils'
+
 import s from './LikeButton.module.css'
 
 type TLikeButtonProps = {
@@ -17,11 +18,10 @@ type TLikeButtonProps = {
 	productId: string
 }
 const LikeButtonComponent = ({ isLike, productId }: TLikeButtonProps) => {
-	const [innerIsLike] = useState(isLike)
-
 	const accessToken = useAppSelector(userSelectors.getAccessToken)
 
-	const [isOptimisticLike, setOptimisticLike] = useOptimistic(innerIsLike)
+	const [optimisticIsLike, setOptimisticIsLike] = useOptimistic(isLike)
+	const [_, startTransition] = useTransition()
 
 	const [setLike] = useSetLikeProductMutation()
 	const [deleteLike] = useDeleteLikeProductMutation()
@@ -32,20 +32,23 @@ const LikeButtonComponent = ({ isLike, productId }: TLikeButtonProps) => {
 			return
 		}
 
-		const likeMutation = isOptimisticLike ? deleteLike : setLike
-		setOptimisticLike(!isOptimisticLike)
-		const response = await likeMutation({ id: `${productId}` })
+		const likeMutation = optimisticIsLike ? deleteLike : setLike
 
-		if (response.error) {
-			const error = response.error as IErrorResponse
-			toast.error(error.data.message)
-		}
+		startTransition(async () => {
+			setOptimisticIsLike(!optimisticIsLike)
+			const response = await likeMutation({ id: `${productId}` })
+
+			if (response.error) {
+				const error = getMessageFromError(response.error, 'Неизвестная ошибка')
+				toast.error(error)
+			}
+		})
 	}
 
 	return (
 		<button
 			className={classNames(s['card__favorite'], {
-				[s['card__favorite_is-active']]: isOptimisticLike,
+				[s['card__favorite_is-active']]: optimisticIsLike,
 			})}
 			onClick={toggleLike}>
 			<LikeSvg />

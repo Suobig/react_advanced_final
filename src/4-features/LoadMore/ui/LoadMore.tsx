@@ -20,10 +20,12 @@ export const LoadMore = (props: LoadMoreProps) => {
 	return (
 		<Stack
 			ref={ref}
-			direction='row'
-			justifyContent='center'
-			alignItems='center'
-			sx={{ my: 5 }}>
+			sx={{
+				justifyContent: 'center',
+				direction: 'row',
+				alignItems: 'center',
+				my: 5,
+			}}>
 			{isFetching && <CircularProgress />}
 			{isEndOfList && <SuccessMessage message='End of list!' />}
 		</Stack>
