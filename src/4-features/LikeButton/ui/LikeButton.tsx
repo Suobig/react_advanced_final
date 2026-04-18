@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { memo, useOptimistic, useTransition } from 'react'
+import { memo, useOptimistic, useState } from 'react'
 import { toast } from 'react-toastify'
 
 import LikeSvg from '6-shared/assets/icons/like.svg?react'
@@ -17,10 +17,11 @@ type TLikeButtonProps = {
 	productId: string
 }
 const LikeButtonComponent = ({ isLike, productId }: TLikeButtonProps) => {
+	const [innerIsLike] = useState(isLike)
+
 	const accessToken = useAppSelector(userSelectors.getAccessToken)
 
-	const [isOptimisticLike, setOptimisticLike] = useOptimistic(isLike)
-	const [_, startTransition] = useTransition()
+	const [isOptimisticLike, setOptimisticLike] = useOptimistic(innerIsLike)
 
 	const [setLike] = useSetLikeProductMutation()
 	const [deleteLike] = useDeleteLikeProductMutation()
@@ -30,18 +31,15 @@ const LikeButtonComponent = ({ isLike, productId }: TLikeButtonProps) => {
 			toast.warning('Вы не авторизованы')
 			return
 		}
-		let response
 
 		const likeMutation = isOptimisticLike ? deleteLike : setLike
-		startTransition(async () => {
-			setOptimisticLike(!isOptimisticLike)
-			response = await likeMutation({ id: `${productId}` })
+		setOptimisticLike(!isOptimisticLike)
+		const response = await likeMutation({ id: `${productId}` })
 
-			if (response.error) {
-				const error = response.error as IErrorResponse
-				toast.error(error.data.message)
-			}
-		})
+		if (response.error) {
+			const error = response.error as IErrorResponse
+			toast.error(error.data.message)
+		}
 	}
 
 	return (

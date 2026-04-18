@@ -13,7 +13,7 @@ import { App } from './App'
 export const RoutePath: Record<string, `/${string}` | '*'> = {
 	home: '/',
 	favorites: '/favorites',
-	products: '/products:productId',
+	products: '/products/:productId',
 	profile: '/profile',
 	cart: '/cart',
 	signup: '/signup',
