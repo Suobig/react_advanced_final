@@ -26,18 +26,18 @@ const LikeButtonComponent = ({ isLike, productId }: TLikeButtonProps) => {
 	const [setLike] = useSetLikeProductMutation()
 	const [deleteLike] = useDeleteLikeProductMutation()
 
-	const toggleLike = async () => {
-		if (!accessToken) {
-			toast.warning('Вы не авторизованы')
-			return
-		}
-
-		const likeMutation = optimisticIsLike ? deleteLike : setLike
-
+	const toggleLike = () => {
 		startTransition(async () => {
-			setOptimisticIsLike(!optimisticIsLike)
-			const response = await likeMutation({ id: `${productId}` })
+			const newIsLike = !optimisticIsLike
+			if (!accessToken) {
+				toast.warning('Вы не авторизованы')
+				return
+			}
 
+			const likeMutation = isLike ? deleteLike : setLike
+
+			setOptimisticIsLike(newIsLike)
+			const response = await likeMutation({ id: `${productId}` }).unwrap()
 			if (response.error) {
 				const error = getMessageFromError(response.error, 'Неизвестная ошибка')
 				toast.error(error)
