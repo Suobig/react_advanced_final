@@ -43,7 +43,7 @@ const HeaderComponent = () => {
 									count={likeCount}
 								/>
 								<HeaderLink
-									to='/favorites'
+									to='/cart'
 									icon={<IconCart />}
 									count={cartProducts.length}
 								/>
