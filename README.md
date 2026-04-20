@@ -30,8 +30,8 @@
 
 #### Архитектура и структура: Скрины
 
-![structure-before](https://github.com/Suobig/react_advanced_final.git/blob/dev/src/common/images/1.1-structure_before.png?raw=true)
-![structure-after](https://github.com/Suobig/react_advanced_final.git/blob/dev/src/common/images/1.2-structure_after.png?raw=true)
+![structure-before](https://github.com/Suobig/react_advanced_final/blob/dev/src/common/images/1.1-structure_before.png?raw=true)
+![structure-after](https://github.com/Suobig/react_advanced_final/blob/dev/src/common/images/1.2-structure_after.png?raw=true)
 
 ### 2. Оптимизация рендеров
 
@@ -51,8 +51,8 @@
 
 #### Оптимизация рендеров: Скрины
 
-![performance-before](https://github.com/Suobig/react_advanced_final.git/blob/dev/src/common/images/2.1-performance_before.png?raw=true)
-![performance-after](https://github.com/Suobig/react_advanced_final.git/blob/dev/src/common/images/2.2-performance_before.png?raw=true)
+![performance-before](https://github.com/Suobig/react_advanced_final/blob/dev/src/common/images/2.1-performance_before.png?raw=true)
+![performance-after](https://github.com/Suobig/react_advanced_final/blob/dev/src/common/images/2.2-performance_before.png?raw=true)
 
 ### 3. React.Portal для модалок
 
@@ -74,7 +74,7 @@
 
 #### React.Portal для модалок: Скрины
 
-![modal](https://github.com/Suobig/react_advanced_final.git/blob/dev/src/common/images/3-modal.png?raw=true)
+![modal](https://github.com/Suobig/react_advanced_final/blob/dev/src/common/images/3-modal.png?raw=true)
 
 ### 4. useRef — реальное применение
 
@@ -90,7 +90,7 @@
 
 #### useRef: Скрины
 
-![useRef](https://github.com/Suobig/react_advanced_final.git/blob/dev/src/common/images/4-useRef.png?raw=true)
+![useRef](https://github.com/Suobig/react_advanced_final/blob/dev/src/common/images/4-useRef.png?raw=true)
 
 ### 5. Собственные сборки (esbuild/swc)
 
@@ -106,7 +106,7 @@
 
 #### Собственные сборки: Скрины
 
-![vite](https://github.com/Suobig/react_advanced_final.git/blob/dev/src/common/images/5-vite.png?raw=true)
+![vite](https://github.com/Suobig/react_advanced_final/blob/dev/src/common/images/5-vite.png?raw=true)
 
 ### 6. Применение React 19 Hooks
 
@@ -126,4 +126,4 @@
 
 #### Применение React 19 Hooks: Скрины
 
-![6-react19_hooks](https://github.com/Suobig/react_advanced_final.git/blob/dev/src/common/images/6-react19_hooks.png?raw=true)
+![6-react19_hooks](https://github.com/Suobig/react_advanced_final/blob/dev/src/common/images/6-react19_hooks.png?raw=true)
